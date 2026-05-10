@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Navigation from "@/components/shared/Navigation";
 import Footer from "@/components/shared/Footer";
 import StoreHero from "@/components/store/StoreHero";
@@ -197,6 +196,8 @@ export default function Store() {
   return (
     <main className="min-h-screen bg-[#3a225c] overflow-x-hidden">
       <Navigation />
+      {/* TODO: If the carousel/book sections are restored, re-add framer-motion
+          imports and animations (carousel) here. */}
       <StoreHero />
       <KeyBenefits />
 
