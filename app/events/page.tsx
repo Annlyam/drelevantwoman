@@ -10,7 +10,7 @@ import Link from "next/link";
 // Import event data
 import eventData from "@/lib/data/eventData.json";
 
-const allEvents: Event[] = eventData as Event[];
+const allEvents: Event[] = (eventData as Event[]).filter((event) => !event.hidden);
 
 type FilterType = "all" | "popular" | "upcoming" | "recent";
 

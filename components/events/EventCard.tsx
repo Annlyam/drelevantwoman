@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Clock } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
+import { getIsFeatured } from "../../lib/utils";
 
 export interface Event {
   id: string;
@@ -21,6 +22,7 @@ export interface Event {
   image: string;
   featured?: boolean;
   isFeatured?: boolean;
+  hidden?: boolean;
   status: "upcoming" | "past" | "cancelled";
   organizer?: {
     name: string;
@@ -99,7 +101,7 @@ export default function EventCard({ event, index = 0 }: EventCardProps) {
             </div>
 
             {/* Featured Badge */}
-            {event.featured && (
+            {getIsFeatured(event) && (
               <div className="absolute top-3 left-3 bg-[#fc98ac] text-white px-3 py-1 rounded-full text-xs font-bold">
                 Featured
               </div>

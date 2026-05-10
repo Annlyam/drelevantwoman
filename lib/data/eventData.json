@@ -46,6 +46,105 @@
     ],
     "isFeatured": true
   },
+
+  {
+    "id": "her-money-her-power",
+    "title": "Her Money, Her Power",
+    "description": "<p class=\"mb-4 text-xl\"><strong class=\"text-[#f9f871]\">An interactive program delving into the crucial question: Is financial independence the ultimate source of power for women?</strong></p><p class=\"mb-6 text-white/90\"><p class=\"mb-6 text-white/90\">Join us for an engaging session that explores the multifaceted relationship between money and power for women.</p></p><p class=\"mb-4 text-white/90 font-semibold\">Key Discussion Points:</p><ul class=\"list-disc list-inside mb-8 space-y-3 text-white/80 ml-6\"><li class=\"mb-2\">The importance of financial literacy for women</li><li class=\"mb-2\">How financial independence can empower women</li></ul><p class=\"mb-4 text-white/90 font-semibold text-lg\">Key Benefits:</p><ul class=\"list-disc list-inside space-y-3 text-white/80 ml-6\"><li class=\"mb-2\">Gain insights into the importance of financial literacy for women</li><li class=\"mb-2\">Understand how financial independence can empower women</li><li class=\"mb-2\">Learn practical steps to achieve financial independence</li><li class=\"mb-2\">Engage in discussions about the broader implications of money and power for women</li></ul>",
+    "category": "Finance & Empowerment",
+    "date": "2024-11-15",
+    "time": "19:00",
+    "endTime": "22:00",
+    "venue": "Zoom Webinar",
+    "location": "Virtual Event",
+    "price": 0,
+    "currency": "₦",
+    "image": "/assets/images/extras/her_money_her_power.jpeg",
+    "status": "past",
+    "organizer": {
+      "name": "The Relevant Woman",
+      "contact": "events@relevantwoman.org"
+    },
+    "tags": ["Finance", "Women Empowerment", "Money Management"],
+    "capacity": 120,
+    "registered": 96,
+    "featured": true,
+    "hidden": false
+  },
+
+  {
+    "id": "celebration-of-international-womens-month",
+    "title": "Fireside Chat themed: Functioning From Wholeness💜",
+    "description": "<p class=\"mb-4 text-xl\"><strong class=\"text-[#f9f871]\">This powerful session will bring together remarkable women who are not only building impactful brands but also living authentically and thriving from a place of wholeness.</strong></p><p class=\"mb-6 text-white/90\"> It’s a space to learn, reflect, and grow as you hear real stories, practical insights, and empowering conversations.</p><p class=\"mb-4 text-white/90 font-semibold\">Featuring:</p><ul class=\"list-disc list-inside mb-8 space-y-3 text-white/80 ml-6\"><li class=\"mb-2\">Iveren Ann Lyam – Founder, The Relevant Woman</li><li class=\"mb-2\">Blessing Ingyape – Founder, Dyslexia Help Africa, Forgex Academy & Dyslexia Project Africa</li><li class=\"mb-2\">Salomé Ingyape – Content Creator & Social Media/Community Manager</li></ul><p class=\"mb-4 text-white/90 font-semibold\">Key Benefits:</p><ul class=\"list-disc list-inside mb-8 space-y-3 text-white/80 ml-6\"><li class=\"mb-2\">Hear real stories, practical insights, and empowering conversations</li><li class=\"mb-2\">Reflect on your own journey and growth</li><li class=\"mb-2\">Connect with a community of like-minded women</li><li class=\"mb-2\">Gain insights into building impactful brands while living authentically</li><li class=\"mb-2\">Cultivate a wealthy mindset</li></ul>",
+    "category": "Community, Social & Celebration",
+    "date": "2026-03-21",
+    "time": "18:00",
+    "endTime": "22:00",
+    "venue": "Zoom Webinar",
+    "location": "Virtual Event",
+    "price": 0,
+    "currency": "₦",
+    "image": "/assets/images/extras/celebration_of_international_womens_month.jpeg",
+    "status": "past",
+    "organizer": {
+      "name": "The Relevant Woman",
+      "contact": "events@relevantwoman.org"
+    },
+    "tags": ["International Women's Month", "Community", "Celebration"],
+    "capacity": 150,
+    "registered": 118,
+    "isFeatured": true
+  },
+
+  {
+    "id": "international-womens-day-2025",
+    "title": "Advertise with The Relevant Woman Growing Your Brand",
+    "description": "<p class=\"mb-4 text-xl\"><strong class=\"text-[#f9f871]\">In honor of International Women’s Day, The Relevant Woman  celebrated  women by spotlighting women-owned businesses that have thrived for 3 years and above.</strong></p><p class=\"mb-6 text-white/90\">Showcase your brand to a growing community of women who support and uplift each other. This is an opportunity to connect with a highly engaged audience and promote your products or services in a meaningful way.</p><p class=\"mb-4 text-white/90 font-semibold\">Key Benefits:</p><ul class=\"list-disc list-inside mb-8 space-y-3 text-white/80 ml-6\"><li class=\"mb-2\">Reach a targeted audience of empowered women</li><li class=\"mb-2\">Increase brand visibility and awareness</li><li class=\"mb-2\">Build meaningful connections with a community of like-minded individuals</li></ul>",
+    "category": "Business & Professional",
+    "date": "2026-03-08",
+    "time": "09:00",
+    "endTime": "23:59",
+    "venue": "Virtual (Online)",
+    "location": "Virtual Event",
+    "price": 0,
+    "currency": "₦",
+    "image": "/assets/images/extras/international_womens_day_2025.jpeg",
+    "status": "past",
+    "organizer": {
+      "name": "The Relevant Woman",
+      "contact": "events@relevantwoman.org"
+    },
+    "tags": ["International Women's Day", "Leadership", "Women Empowerment"],
+    "capacity": 200,
+    "registered": 172,
+    "isFeatured": true
+  },
+
+  {
+    "id": "celebrating-international-womens-day",
+    "title": "Celebrating International Women's Day",
+    "description": "<p class=\"mb-4 text-xl\"><strong class=\"text-[#f9f871]\">This March 2026 , The relevant Woman celebrated the International Women’s by spotlighting bold, courageous and brilliant women who are building brands, breaking barriers and creating impact. 💜</strong></p>",
+    "category": "Community & Celebration",
+    "date": "2026-03-09",
+    "time": "01:00",
+    "endTime": "23:59",
+    "venue": "Virtual (Online)",
+    "location": "Virtual Event",
+    "price": 0,
+    "currency": "₦",
+    "image": "/assets/images/extras/celebrating_international_womens_day.jpeg",
+    "status": "past",
+    "organizer": {
+      "name": "The Relevant Woman",
+      "contact": "events@relevantwoman.org"
+    },
+    "tags": ["International Women's Day", "Celebration", "Community"],
+    "capacity": 140,
+    "registered": 109,
+    "featured": true,
+    "hidden": false
+  },
+
   {
     "id": "mentorship-masterclass-series",
     "title": "Mentorship Masterclass Series",
@@ -67,8 +166,10 @@
     "tags": ["Mentorship", "Personal Development", "Workshop"],
     "capacity": 100,
     "registered": 67,
-    "isFeatured": true
+    "isFeatured": true,
+    "hidden": true
   },
+
   {
     "id": "networking-mixer-connect-grow",
     "title": "Networking Mixer: Connect & Grow",
@@ -90,9 +191,12 @@
     "tags": ["Networking", "Social", "Community"],
     "capacity": 80,
     "registered": 52,
-    "isFeatured": true
+    "isFeatured": true,
+    "hidden": true
   },
+
   {
+
     "id": "digital-skills-bootcamp",
     "title": "Digital Skills Bootcamp",
     "description": "Intensive 3-day bootcamp covering digital marketing, social media management, content creation, and online business strategies for modern entrepreneurs.",
@@ -113,8 +217,10 @@
     "tags": ["Digital Skills", "Entrepreneurship", "Training"],
     "capacity": 50,
     "registered": 38,
-    "isFeatured": false
+    "isFeatured": false,
+    "hidden": true
   },
+
   {
     "id": "wellness-self-care-retreat",
     "title": "Wellness & Self-Care Retreat",
@@ -136,8 +242,10 @@
     "tags": ["Wellness", "Self-Care", "Mental Health"],
     "capacity": 60,
     "registered": 28,
-    "isFeatured": false
+    "isFeatured": false,
+    "hidden": true
   },
+  
   {
     "id": "entrepreneurship-workshop-from-idea-to-launch",
     "title": "Entrepreneurship Workshop: From Idea to Launch",
@@ -159,8 +267,10 @@
     "tags": ["Entrepreneurship", "Business", "Workshop"],
     "capacity": 120,
     "registered": 89,
-    "isFeatured": false
+    "isFeatured": false,
+    "hidden": true
   },
+
   {
     "id": "career-development-panel-discussion",
     "title": "Career Development Panel Discussion",
@@ -182,7 +292,8 @@
     "tags": ["Career Development", "Panel Discussion", "Professional Growth"],
     "capacity": 150,
     "registered": 112,
-    "isFeatured": false
+    "isFeatured": false,
+    "hidden": true
   },
   {
     "id": "community-impact-day",
@@ -205,6 +316,7 @@
     "tags": ["Community", "Volunteering", "Social Impact"],
     "capacity": 100,
     "registered": 73,
-    "isFeatured": false
+    "isFeatured": false,
+    "hidden": true
   }
 ]

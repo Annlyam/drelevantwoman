@@ -32,12 +32,18 @@ export default function EventDetailSidebar({ event }: EventDetailSidebarProps) {
                          event.venue?.toLowerCase().includes("online") ||
                          event.location?.toLowerCase().includes("virtual");
 
-  // Get similar events (same category, excluding current event)
-  const similarEvents = (eventData as Event[])
-    .filter(
-      (e) => e.id !== event.id && e.category === event.category && e.status === "upcoming"
-    )
-    .slice(0, 3);
+  const curatedEventIds = [
+    "her-money-her-power",
+    "celebration-of-international-womens-month",
+    "international-womens-day-2025",
+    "celebrating-international-womens-day",
+  ];
+
+  // Show a curated event list in the sidebar instead of category-based matches.
+  const relatedEvents = curatedEventIds
+    .map((id) => (eventData as Event[]).find((candidate) => candidate.id === id))
+    .filter((candidate): candidate is Event => Boolean(candidate))
+    .filter((candidate) => candidate.id !== event.id);
 
   return (
     <div className="space-y-6">
@@ -129,8 +135,8 @@ export default function EventDetailSidebar({ event }: EventDetailSidebarProps) {
         </motion.div>
       )}
 
-      {/* Similar Events */}
-      {similarEvents.length > 0 && (
+      {/* Related Events */}
+      {relatedEvents.length > 0 && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -138,12 +144,12 @@ export default function EventDetailSidebar({ event }: EventDetailSidebarProps) {
           transition={{ delay: 0.2 }}
           className="space-y-4"
         >
-          <h3 className="text-2xl font-bold text-white">Similar Events</h3>
+          <h3 className="text-2xl font-bold text-white">Related Events</h3>
           <div className="space-y-4">
-            {similarEvents.map((similarEvent, index) => (
+            {relatedEvents.map((relatedEvent, index) => (
               <EventCard
-                key={similarEvent.id}
-                event={similarEvent}
+                key={relatedEvent.id}
+                event={relatedEvent}
                 index={index}
               />
             ))}
