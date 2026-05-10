@@ -8,9 +8,18 @@ import eventData from "@/lib/data/eventData.json";
 import { getIsFeatured } from "@/lib/utils";
 
 export default function FeaturedEvents() {
+  const homepageFeaturedEventIds = new Set([
+    "international-womens-day-2025",
+    "celebration-of-international-womens-month",
+  ]);
+
   // Get top 3 featured events
   const featuredEvents = (eventData as Event[])
-    .filter((event) => getIsFeatured(event) && event.status === "upcoming" && event.hidden !== true)
+    .filter(
+      (event) =>
+        event.hidden !== true &&
+        (homepageFeaturedEventIds.has(event.id) || (getIsFeatured(event) && event.status === "upcoming")),
+    )
     .slice(0, 3);
 
   if (featuredEvents.length === 0) {
