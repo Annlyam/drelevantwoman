@@ -1,0 +1,210 @@
+[
+  {
+    "id": "the-relevant-woman-academy-rwa",
+    "title": "The Relevant Woman ACADEMY (RWA)",
+    "description": "<p class=\"mb-4 text-xl\"><strong class=\"text-[#f9f871]\">Register today and begin a journey of transformation.</strong></p><p class=\"mb-6 text-white/90\">The Relevant Woman Academy offers a comprehensive program designed to empower women through personal and professional development.</p><p class=\"mb-4 text-white/90 font-semibold\">This virtual program provides:</p><ul class=\"list-disc list-inside mb-8 space-y-3 text-white/80 ml-6\"><li class=\"mb-2\">Official Certification from The Relevant Woman Academy</li><li class=\"mb-2\">Training led by top professionals and industry experts</li><li class=\"mb-2\">Featured exposure in The Relevant Woman Magazine</li><li class=\"mb-2\">Exclusive access to partner-sponsored opportunities and awards</li></ul><p class=\"mb-4 text-white/90 font-semibold text-lg\">Key Benefits:</p><ul class=\"list-disc list-inside space-y-3 text-white/80 ml-6\"><li class=\"mb-2\">Become deeply rooted in your identity</li><li class=\"mb-2\">Master self-leadership</li><li class=\"mb-2\">Gain clarity on purpose/assignment/calling</li><li class=\"mb-2\">Acquire transferable career excellence</li><li class=\"mb-2\">Cultivate a wealthy mindset</li><li class=\"mb-2\">Develop and lead others effectively</li><li class=\"mb-2\">Become a powerful communicator and public speaker</li></ul>",
+    "category": "Education & Training",
+    "date": "2026-03-06",
+    "time": "09:00",
+    "endTime": "17:00",
+    "venue": "Virtual (Online)",
+    "location": "Virtual Event",
+    "price": 0,
+    "currency": "₦",
+    "image": "/assets/images/extras/RWA_Academy.jpg",
+    "status": "upcoming",
+    "organizer": {
+      "name": "The Relevant Woman Academy",
+      "contact": "academy@relevantwoman.org"
+    },
+    "tags": [
+      "Academy",
+      "Certification",
+      "Personal Development",
+      "Professional Development",
+      "Leadership",
+      "Transformation"
+    ],
+    "capacity": 500,
+    "registered": 0,
+    "registrationEndDate": "2026-03-06",
+    "website": "www.drelevantwoman.com",
+    "features": [
+      "Official Certification from The Relevant Woman Academy",
+      "Training led by top professionals and industry experts",
+      "Featured exposure in The Relevant Woman Magazine",
+      "Exclusive access to partner-sponsored opportunities and awards"
+    ],
+    "benefits": [
+      "Become deeply rooted in your identity",
+      "Master self-leadership",
+      "Gain clarity on purpose/assignment/calling",
+      "Acquire transferable career excellence",
+      "Cultivate a wealthy mindset",
+      "Develop and lead others effectively",
+      "Become a powerful communicator and public speaker"
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "mentorship-masterclass-series",
+    "title": "Mentorship Masterclass Series",
+    "description": "A comprehensive workshop series designed to help you become an effective mentor and mentee. Learn the art of meaningful mentorship relationships.",
+    "category": "Education & Training",
+    "date": "2026-02-28",
+    "time": "14:00",
+    "endTime": "18:00",
+    "venue": "ONLINE",
+    "location": "Virtual Event",
+    "price": 0,
+    "currency": "₦",
+    "image": "/assets/images/extras/mentorship_session.jpg",
+    "status": "upcoming",
+    "organizer": {
+      "name": "The Relevant Woman Academy",
+      "contact": "academy@relevantwoman.org"
+    },
+    "tags": ["Mentorship", "Personal Development", "Workshop"],
+    "capacity": 100,
+    "registered": 67,
+    "isFeatured": true
+  },
+  {
+    "id": "networking-mixer-connect-grow",
+    "title": "Networking Mixer: Connect & Grow",
+    "description": "An evening of meaningful connections, inspiring conversations, and opportunities to grow your professional network in a relaxed atmosphere.",
+    "category": "Networking",
+    "date": "2026-02-20",
+    "time": "18:00",
+    "endTime": "21:00",
+    "venue": "Sandbox Beach Club",
+    "location": "Accra, Ghana",
+    "price": 150,
+    "currency": "₦",
+    "image": "/assets/images/extras/network_event.jpg",
+    "status": "upcoming",
+    "organizer": {
+      "name": "The Relevant Woman",
+      "contact": "events@relevantwoman.org"
+    },
+    "tags": ["Networking", "Social", "Community"],
+    "capacity": 80,
+    "registered": 52,
+    "isFeatured": true
+  },
+  {
+    "id": "digital-skills-bootcamp",
+    "title": "Digital Skills Bootcamp",
+    "description": "Intensive 3-day bootcamp covering digital marketing, social media management, content creation, and online business strategies for modern entrepreneurs.",
+    "category": "Education & Training",
+    "date": "2026-03-10",
+    "time": "09:00",
+    "endTime": "17:00",
+    "venue": "TechHub Accra",
+    "location": "Accra, Ghana",
+    "price": 750,
+    "currency": "₦",
+    "image": "/assets/images/extras/collaborative_learning.jpg",
+    "status": "upcoming",
+    "organizer": {
+      "name": "The Relevant Woman Academy",
+      "contact": "academy@relevantwoman.org"
+    },
+    "tags": ["Digital Skills", "Entrepreneurship", "Training"],
+    "capacity": 50,
+    "registered": 38,
+    "isFeatured": false
+  },
+  {
+    "id": "wellness-self-care-retreat",
+    "title": "Wellness & Self-Care Retreat",
+    "description": "A rejuvenating day focused on mental health, physical wellness, and self-care practices. Includes yoga sessions, meditation, and wellness workshops.",
+    "category": "Health & Wellness",
+    "date": "2026-03-22",
+    "time": "08:00",
+    "endTime": "16:00",
+    "venue": "Sunflower Lodge",
+    "location": "Accra, Ghana",
+    "price": 0,
+    "currency": "₦",
+    "image": "/assets/images/extras/empowerment_workshop.jpg",
+    "status": "upcoming",
+    "organizer": {
+      "name": "The Relevant Woman",
+      "contact": "events@relevantwoman.org"
+    },
+    "tags": ["Wellness", "Self-Care", "Mental Health"],
+    "capacity": 60,
+    "registered": 28,
+    "isFeatured": false
+  },
+  {
+    "id": "entrepreneurship-workshop-from-idea-to-launch",
+    "title": "Entrepreneurship Workshop: From Idea to Launch",
+    "description": "Learn the fundamentals of starting and scaling a business. Topics include business planning, funding strategies, marketing, and legal considerations.",
+    "category": "Business & Professional",
+    "date": "2026-02-25",
+    "time": "10:00",
+    "endTime": "15:00",
+    "venue": "ONLINE",
+    "location": "Virtual Event",
+    "price": 300,
+    "currency": "₦",
+    "image": "/assets/images/extras/collaborative_learning.jpg",
+    "status": "upcoming",
+    "organizer": {
+      "name": "The Relevant Woman Academy",
+      "contact": "academy@relevantwoman.org"
+    },
+    "tags": ["Entrepreneurship", "Business", "Workshop"],
+    "capacity": 120,
+    "registered": 89,
+    "isFeatured": false
+  },
+  {
+    "id": "career-development-panel-discussion",
+    "title": "Career Development Panel Discussion",
+    "description": "Join industry leaders for an insightful panel discussion on career growth, navigating workplace challenges, and building a successful career path.",
+    "category": "Business & Professional",
+    "date": "2026-03-05",
+    "time": "16:00",
+    "endTime": "19:00",
+    "venue": "Alliance Française d'Accra",
+    "location": "Accra, Ghana",
+    "price": 200,
+    "currency": "₦",
+    "image": "/assets/images/extras/mentorship_session.jpg",
+    "status": "upcoming",
+    "organizer": {
+      "name": "The Relevant Woman",
+      "contact": "events@relevantwoman.org"
+    },
+    "tags": ["Career Development", "Panel Discussion", "Professional Growth"],
+    "capacity": 150,
+    "registered": 112,
+    "isFeatured": false
+  },
+  {
+    "id": "community-impact-day",
+    "title": "Community Impact Day",
+    "description": "A day dedicated to giving back to the community through volunteer activities, charity work, and collaborative projects that make a difference.",
+    "category": "Community & Social Impact",
+    "date": "2026-03-18",
+    "time": "09:00",
+    "endTime": "14:00",
+    "venue": "Various Locations",
+    "location": "Accra, Ghana",
+    "price": 0,
+    "currency": "₦",
+    "image": "/assets/images/extras/network_event.jpg",
+    "status": "upcoming",
+    "organizer": {
+      "name": "The Relevant Woman",
+      "contact": "events@relevantwoman.org"
+    },
+    "tags": ["Community", "Volunteering", "Social Impact"],
+    "capacity": 100,
+    "registered": 73,
+    "isFeatured": false
+  }
+]
