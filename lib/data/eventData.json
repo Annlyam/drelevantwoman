@@ -46,6 +46,7 @@
     ],
     "isFeatured": true
   },
+
   {
     "id": "her-money-her-power",
     "title": "Her Money, Her Power",
@@ -70,6 +71,7 @@
     "featured": true,
     "hidden": false
   },
+
   {
     "id": "celebration-of-international-womens-month",
     "title": "Fireside Chat themed: Functioning From Wholeness💜",
@@ -91,9 +93,9 @@
     "tags": ["International Women's Month", "Community", "Celebration"],
     "capacity": 150,
     "registered": 118,
-    "featured": true,
-    "hidden": false
+    "isFeatured": true
   },
+
   {
     "id": "international-womens-day-2025",
     "title": "Advertise with The Relevant Woman Growing Your Brand",
@@ -115,9 +117,9 @@
     "tags": ["International Women's Day", "Leadership", "Women Empowerment"],
     "capacity": 200,
     "registered": 172,
-    "featured": true,
-    "hidden": false
+    "isFeatured": true
   },
+
   {
     "id": "celebrating-international-womens-day",
     "title": "Celebrating International Women's Day",
@@ -142,6 +144,7 @@
     "featured": true,
     "hidden": false
   },
+
   {
     "id": "mentorship-masterclass-series",
     "title": "Mentorship Masterclass Series",
@@ -166,6 +169,7 @@
     "isFeatured": true,
     "hidden": true
   },
+
   {
     "id": "networking-mixer-connect-grow",
     "title": "Networking Mixer: Connect & Grow",
@@ -190,7 +194,9 @@
     "isFeatured": true,
     "hidden": true
   },
+
   {
+
     "id": "digital-skills-bootcamp",
     "title": "Digital Skills Bootcamp",
     "description": "Intensive 3-day bootcamp covering digital marketing, social media management, content creation, and online business strategies for modern entrepreneurs.",
@@ -214,6 +220,7 @@
     "isFeatured": false,
     "hidden": true
   },
+
   {
     "id": "wellness-self-care-retreat",
     "title": "Wellness & Self-Care Retreat",
@@ -238,6 +245,7 @@
     "isFeatured": false,
     "hidden": true
   },
+  
   {
     "id": "entrepreneurship-workshop-from-idea-to-launch",
     "title": "Entrepreneurship Workshop: From Idea to Launch",
@@ -262,6 +270,7 @@
     "isFeatured": false,
     "hidden": true
   },
+
   {
     "id": "career-development-panel-discussion",
     "title": "Career Development Panel Discussion",
