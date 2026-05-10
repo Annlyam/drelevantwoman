@@ -183,152 +183,158 @@ export default function Store() {
       <StoreHero />
       <KeyBenefits />
 
-      {/* Recommended Products */}
-      <section className="py-12 bg-[#3a225c]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold text-white mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Recommended to You
-          </motion.h2>
-          <Swiper
-            modules={[SwiperNavigation]}
-            spaceBetween={24}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-              1280: { slidesPerView: 4 },
-            }}
-            navigation={{
-              prevEl: ".swiper-button-prev-recommended",
-              nextEl: ".swiper-button-next-recommended",
-            }}
-            className="relative"
-          >
-            {recommendedPrograms.map((program, index) => (
-              <SwiperSlide key={program.id}>
-                <ProgramCard program={program} index={index} />
-              </SwiperSlide>
-            ))}
-            <button
-              className="swiper-button-prev-recommended absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
-              type="button"
-              aria-label="Previous"
+      {/* Recommended Products (hidden) */}
+      {false && (
+        <section className="py-12 bg-[#3a225c]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.h2
+              className="text-3xl md:text-4xl font-bold text-white mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
             >
-              <ChevronLeft className="w-6 h-6 text-white" />
-            </button>
-            <button
-              className="swiper-button-next-recommended absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
-              type="button"
-              aria-label="Next"
+              Recommended to You
+            </motion.h2>
+            <Swiper
+              modules={[SwiperNavigation]}
+              spaceBetween={24}
+              slidesPerView={1}
+              breakpoints={{
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+                1280: { slidesPerView: 4 },
+              }}
+              navigation={{
+                prevEl: ".swiper-button-prev-recommended",
+                nextEl: ".swiper-button-next-recommended",
+              }}
+              className="relative"
             >
-              <ChevronRight className="w-6 h-6 text-white" />
-            </button>
-          </Swiper>
-        </div>
-      </section>
+              {recommendedPrograms.map((program, index) => (
+                <SwiperSlide key={program.id}>
+                  <ProgramCard program={program} index={index} />
+                </SwiperSlide>
+              ))}
+              <button
+                className="swiper-button-prev-recommended absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+                type="button"
+                aria-label="Previous"
+              >
+                <ChevronLeft className="w-6 h-6 text-white" />
+              </button>
+              <button
+                className="swiper-button-next-recommended absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+                type="button"
+                aria-label="Next"
+              >
+                <ChevronRight className="w-6 h-6 text-white" />
+              </button>
+            </Swiper>
+          </div>
+        </section>
+      )}
 
-      {/* Most Popular Products */}
-      <section className="py-12 bg-[#3a225c]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold text-white mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Most Popular
-          </motion.h2>
-          <Swiper
-            modules={[SwiperNavigation]}
-            spaceBetween={24}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-              1280: { slidesPerView: 4 },
-            }}
-            navigation={{
-              prevEl: ".swiper-button-prev-popular",
-              nextEl: ".swiper-button-next-popular",
-            }}
-            className="relative"
-          >
-            {popularPrograms.map((program, index) => (
-              <SwiperSlide key={program.id}>
-                <ProgramCard program={program} index={index} />
-              </SwiperSlide>
-            ))}
-            <button
-              className="swiper-button-prev-popular absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
-              type="button"
-              aria-label="Previous"
+      {/* Most Popular Products (hidden) */}
+      {false && (
+        <section className="py-12 bg-[#3a225c]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.h2
+              className="text-3xl md:text-4xl font-bold text-white mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
             >
-              <ChevronLeft className="w-6 h-6 text-white" />
-            </button>
-            <button
-              className="swiper-button-next-popular absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
-              type="button"
-              aria-label="Next"
+              Most Popular
+            </motion.h2>
+            <Swiper
+              modules={[SwiperNavigation]}
+              spaceBetween={24}
+              slidesPerView={1}
+              breakpoints={{
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+                1280: { slidesPerView: 4 },
+              }}
+              navigation={{
+                prevEl: ".swiper-button-prev-popular",
+                nextEl: ".swiper-button-next-popular",
+              }}
+              className="relative"
             >
-              <ChevronRight className="w-6 h-6 text-white" />
-            </button>
-          </Swiper>
-        </div>
-      </section>
+              {popularPrograms.map((program, index) => (
+                <SwiperSlide key={program.id}>
+                  <ProgramCard program={program} index={index} />
+                </SwiperSlide>
+              ))}
+              <button
+                className="swiper-button-prev-popular absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+                type="button"
+                aria-label="Previous"
+              >
+                <ChevronLeft className="w-6 h-6 text-white" />
+              </button>
+              <button
+                className="swiper-button-next-popular absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+                type="button"
+                aria-label="Next"
+              >
+                <ChevronRight className="w-6 h-6 text-white" />
+              </button>
+            </Swiper>
+          </div>
+        </section>
+      )}
 
-      {/* Trending Products */}
-      <section className="py-12 bg-[#3a225c]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold text-white mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Trending Now
-          </motion.h2>
-          <Swiper
-            modules={[SwiperNavigation]}
-            spaceBetween={24}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-              1280: { slidesPerView: 4 },
-            }}
-            navigation={{
-              prevEl: ".swiper-button-prev-trending",
-              nextEl: ".swiper-button-next-trending",
-            }}
-            className="relative"
-          >
-            {trendingPrograms.map((program, index) => (
-              <SwiperSlide key={program.id}>
-                <ProgramCard program={program} index={index} />
-              </SwiperSlide>
-            ))}
-            <button
-              className="swiper-button-prev-trending absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
-              type="button"
-              aria-label="Previous"
+      {/* Trending Products (hidden) */}
+      {false && (
+        <section className="py-12 bg-[#3a225c]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.h2
+              className="text-3xl md:text-4xl font-bold text-white mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
             >
-              <ChevronLeft className="w-6 h-6 text-white" />
-            </button>
-            <button
-              className="swiper-button-next-trending absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
-              type="button"
-              aria-label="Next"
+              Trending Now
+            </motion.h2>
+            <Swiper
+              modules={[SwiperNavigation]}
+              spaceBetween={24}
+              slidesPerView={1}
+              breakpoints={{
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+                1280: { slidesPerView: 4 },
+              }}
+              navigation={{
+                prevEl: ".swiper-button-prev-trending",
+                nextEl: ".swiper-button-next-trending",
+              }}
+              className="relative"
             >
-              <ChevronRight className="w-6 h-6 text-white" />
-            </button>
-          </Swiper>
-        </div>
-      </section>
+              {trendingPrograms.map((program, index) => (
+                <SwiperSlide key={program.id}>
+                  <ProgramCard program={program} index={index} />
+                </SwiperSlide>
+              ))}
+              <button
+                className="swiper-button-prev-trending absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+                type="button"
+                aria-label="Previous"
+              >
+                <ChevronLeft className="w-6 h-6 text-white" />
+              </button>
+              <button
+                className="swiper-button-next-trending absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+                type="button"
+                aria-label="Next"
+              >
+                <ChevronRight className="w-6 h-6 text-white" />
+              </button>
+            </Swiper>
+          </div>
+        </section>
+      )}
 
       <FloatingCartButton />
       <Footer />

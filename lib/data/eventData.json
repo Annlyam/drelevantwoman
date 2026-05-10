@@ -47,6 +47,100 @@
     "isFeatured": true
   },
   {
+    "id": "her-money-her-power",
+    "title": "Her Money, Her Power",
+    "description": "A practical conversation on financial confidence, income growth, and the power women build when they take control of their money story.",
+    "category": "Finance & Empowerment",
+    "date": "2025-03-15",
+    "time": "10:00",
+    "endTime": "13:00",
+    "venue": "Accra, Ghana",
+    "location": "Accra, Ghana",
+    "price": 0,
+    "currency": "₦",
+    "image": "/assets/images/extras/her_money_her_power.jpeg",
+    "status": "past",
+    "organizer": {
+      "name": "The Relevant Woman",
+      "contact": "events@relevantwoman.org"
+    },
+    "tags": ["Finance", "Women Empowerment", "Money Management"],
+    "capacity": 120,
+    "registered": 96,
+    "featured": true,
+    "hidden": false
+  },
+  {
+    "id": "celebration-of-international-womens-month",
+    "title": "Celebration of International Women's Month",
+    "description": "A month-long celebration spotlighting women&apos;s achievements, stories of impact, and opportunities for learning and connection.",
+    "category": "Community & Celebration",
+    "date": "2025-03-22",
+    "time": "14:00",
+    "endTime": "17:00",
+    "venue": "Accra, Ghana",
+    "location": "Accra, Ghana",
+    "price": 0,
+    "currency": "₦",
+    "image": "/assets/images/extras/celebration_of_international_womens_month.jpeg",
+    "status": "past",
+    "organizer": {
+      "name": "The Relevant Woman",
+      "contact": "events@relevantwoman.org"
+    },
+    "tags": ["International Women's Month", "Community", "Celebration"],
+    "capacity": 150,
+    "registered": 118,
+    "hidden": false
+  },
+  {
+    "id": "international-womens-day-2025",
+    "title": "International Women's Day 2025",
+    "description": "A signature gathering to honor the 2025 International Women's Day theme with conversations, inspiration, and collective action.",
+    "category": "Women's Day",
+    "date": "2025-03-08",
+    "time": "09:00",
+    "endTime": "12:00",
+    "venue": "Accra, Ghana",
+    "location": "Accra, Ghana",
+    "price": 0,
+    "currency": "₦",
+    "image": "/assets/images/extras/international_womens_day_2025.jpeg",
+    "status": "past",
+    "organizer": {
+      "name": "The Relevant Woman",
+      "contact": "events@relevantwoman.org"
+    },
+    "tags": ["International Women's Day", "Leadership", "Women Empowerment"],
+    "capacity": 200,
+    "registered": 172,
+    "featured": true,
+    "hidden": false
+  },
+  {
+    "id": "celebrating-international-womens-day",
+    "title": "Celebrating International Women's Day",
+    "description": "An uplifting event celebrating women&apos;s achievements, resilience, and the communities that continue to champion progress.",
+    "category": "Community & Celebration",
+    "date": "2025-03-09",
+    "time": "15:00",
+    "endTime": "18:00",
+    "venue": "Accra, Ghana",
+    "location": "Accra, Ghana",
+    "price": 0,
+    "currency": "₦",
+    "image": "/assets/images/extras/celebrating_international_womens_day.jpeg",
+    "status": "past",
+    "organizer": {
+      "name": "The Relevant Woman",
+      "contact": "events@relevantwoman.org"
+    },
+    "tags": ["International Women's Day", "Celebration", "Community"],
+    "capacity": 140,
+    "registered": 109,
+    "hidden": false
+  },
+  {
     "id": "mentorship-masterclass-series",
     "title": "Mentorship Masterclass Series",
     "description": "A comprehensive workshop series designed to help you become an effective mentor and mentee. Learn the art of meaningful mentorship relationships.",
@@ -67,7 +161,8 @@
     "tags": ["Mentorship", "Personal Development", "Workshop"],
     "capacity": 100,
     "registered": 67,
-    "isFeatured": true
+    "isFeatured": true,
+    "hidden": true
   },
   {
     "id": "networking-mixer-connect-grow",
@@ -90,7 +185,8 @@
     "tags": ["Networking", "Social", "Community"],
     "capacity": 80,
     "registered": 52,
-    "isFeatured": true
+    "isFeatured": true,
+    "hidden": true
   },
   {
     "id": "digital-skills-bootcamp",
@@ -113,7 +209,8 @@
     "tags": ["Digital Skills", "Entrepreneurship", "Training"],
     "capacity": 50,
     "registered": 38,
-    "isFeatured": false
+    "isFeatured": false,
+    "hidden": true
   },
   {
     "id": "wellness-self-care-retreat",
@@ -136,7 +233,8 @@
     "tags": ["Wellness", "Self-Care", "Mental Health"],
     "capacity": 60,
     "registered": 28,
-    "isFeatured": false
+    "isFeatured": false,
+    "hidden": true
   },
   {
     "id": "entrepreneurship-workshop-from-idea-to-launch",
@@ -159,7 +257,8 @@
     "tags": ["Entrepreneurship", "Business", "Workshop"],
     "capacity": 120,
     "registered": 89,
-    "isFeatured": false
+    "isFeatured": false,
+    "hidden": true
   },
   {
     "id": "career-development-panel-discussion",
@@ -182,7 +281,8 @@
     "tags": ["Career Development", "Panel Discussion", "Professional Growth"],
     "capacity": 150,
     "registered": 112,
-    "isFeatured": false
+    "isFeatured": false,
+    "hidden": true
   },
   {
     "id": "community-impact-day",
@@ -205,6 +305,7 @@
     "tags": ["Community", "Volunteering", "Social Impact"],
     "capacity": 100,
     "registered": 73,
-    "isFeatured": false
+    "isFeatured": false,
+    "hidden": true
   }
 ]

@@ -21,6 +21,7 @@ export interface Event {
   image: string;
   featured?: boolean;
   isFeatured?: boolean;
+  hidden?: boolean;
   status: "upcoming" | "past" | "cancelled";
   organizer?: {
     name: string;

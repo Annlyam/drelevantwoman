@@ -76,8 +76,8 @@ export default function Newsletter() {
               <div className="space-y-2.5 sm:space-y-3">
                 <div className="flex items-center gap-2.5 sm:gap-3 text-white/90 text-sm sm:text-base min-w-0">
                   <Phone size={18} className="shrink-0 w-[18px] h-[18px]" />
-                  <a href="tel:+2347041409742" className="hover:text-[#f9f871] transition-colors">
-                    07041409742
+                  <a href="tel:+2348123553150" className="hover:text-[#f9f871] transition-colors">
+                    08123553150
                   </a>
                 </div>
                 <div className="flex items-center gap-2.5 sm:gap-3 text-white/90 text-sm sm:text-base min-w-0">

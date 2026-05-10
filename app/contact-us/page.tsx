@@ -128,8 +128,8 @@ export default function ContactUs() {
     {
       icon: Phone,
       title: "Call Us",
-      content: "07041409742",
-      link: "tel:+2347041409742",
+      content: "08123553150",
+      link: "tel:+2348123553150",
       color: "bg-[#f9f871]/20",
       iconColor: "text-[#f9f871]",
     },
