@@ -9,7 +9,7 @@ import eventData from "@/lib/data/eventData.json";
 export default function FeaturedEvents() {
   // Get top 3 featured events
   const featuredEvents = (eventData as Event[])
-    .filter((event) => event.isFeatured === true && event.status === "upcoming")
+    .filter((event) => event.isFeatured === true && event.status === "upcoming" && event.hidden !== true)
     .slice(0, 3);
 
   if (featuredEvents.length === 0) {
