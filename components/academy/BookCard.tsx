@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, Star, Clock, User } from "lucide-react";
-import { generateSlug } from "@/lib/utils";
+import { generateSlug, getIsFeatured } from "@/lib/utils";
 
 export interface Book {
   id: string;
@@ -59,7 +59,7 @@ export default function BookCard({
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#3a225c]/80 via-transparent to-transparent" />
-            {book.featured && (
+            {getIsFeatured(book) && (
               <div className="absolute top-3 left-3 px-3 py-1 bg-[#f9f871] text-[#3a225c] rounded-full text-xs font-bold">
                 Featured
               </div>

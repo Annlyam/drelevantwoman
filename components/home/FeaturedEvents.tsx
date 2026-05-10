@@ -5,11 +5,12 @@ import Link from "next/link";
 import { Calendar, ArrowRight } from "lucide-react";
 import EventCard, { Event } from "@/components/events/EventCard";
 import eventData from "@/lib/data/eventData.json";
+import { getIsFeatured } from "@/lib/utils";
 
 export default function FeaturedEvents() {
   // Get top 3 featured events
   const featuredEvents = (eventData as Event[])
-    .filter((event) => event.isFeatured === true && event.status === "upcoming" && event.hidden !== true)
+    .filter((event) => getIsFeatured(event) && event.status === "upcoming" && event.hidden !== true)
     .slice(0, 3);
 
   if (featuredEvents.length === 0) {

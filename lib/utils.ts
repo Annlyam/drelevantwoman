@@ -7,3 +7,10 @@ export function generateSlug(text: string): string {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 }
+
+/**
+ * Compatibility helper: prefer `isFeatured`, fall back to legacy `featured`.
+ */
+export function getIsFeatured(event: any): boolean {
+  return (event?.isFeatured ?? event?.featured ?? false) as boolean;
+}

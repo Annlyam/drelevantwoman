@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Linkedin, Instagram, Twitter } from "lucide-react";
 import Image from "next/image";
+import { getIsFeatured } from "@/lib/utils";
 
 interface TeamMember {
   name: string;
@@ -50,7 +51,7 @@ export default function TeamPageCard({
         />
 
         {/* Featured Badge */}
-        {member.featured && (
+        {getIsFeatured(member) && (
           <motion.div
             className="absolute top-4 right-4 z-10 px-4 py-2 bg-[#f9f871] rounded-full shadow-lg"
             initial={{ scale: 0, rotate: -180 }}

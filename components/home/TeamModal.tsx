@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Linkedin, Instagram, Twitter } from "lucide-react";
 import Image from "next/image";
+import { getIsFeatured } from "@/lib/utils";
 
 interface TeamMember {
   name: string;
@@ -107,7 +108,7 @@ export default function TeamModal({ member, isOpen, onClose }: TeamModalProps) {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                {member.featured && (
+                {getIsFeatured(member) && (
                   <div className="absolute top-4 left-4 md:top-6 md:left-6 z-10 px-4 py-2 bg-[#f9f871] rounded-full">
                     <span className="text-[#3a225c] font-bold text-xs md:text-sm">
                       FOUNDER
