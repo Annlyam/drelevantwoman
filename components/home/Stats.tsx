@@ -97,8 +97,7 @@ export default function Stats() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                Identify and fix technical issues and improve on-page elements
-                like metadata, headers, and content relevancy.
+                Join a thriving community of ambitious young women dedicated to discovering your unlimited potential. Through mentorship, leadership development, and professional growth opportunities, we empower you to shape tomorrow and make lasting impact.
               </motion.p>
 
               {/* CTA Button */}
@@ -110,7 +109,7 @@ export default function Stats() {
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
                 <Link
-                  href="/contact-us"
+                  href="/become-a-member"
                   className="inline-block px-8 py-4 bg-[#f9f871] text-[#3a225c] font-bold rounded-lg hover:bg-[#f9f871] transition-all duration-300 uppercase tracking-wide"
                 >
                   Get Started
