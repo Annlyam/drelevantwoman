@@ -2,47 +2,29 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { Award, Smile, Users } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-
-const stats = [
-  {
-    icon: Award,
-    value: 10,
-    suffix: " +",
-    label: "Yrs of Experience",
-    color: "#f9f871",
-  },
-  {
-    icon: Smile,
-    value: 12,
-    suffix: " K",
-    label: "Happy Customers",
-    color: "#f9f871",
-  },
-  {
-    icon: Users,
-    value: 80,
-    suffix: " +",
-    label: "Team Members",
-    color: "#f9f871",
-  },
-];
+import { statsConfig } from "@/lib/data/statsConfig";
 
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { 
+    once: true, 
+    amount: 0.5,
+    margin: "0px 0px -50px 0px"
+  });
 
   useEffect(() => {
-    if (isInView) {
+    let timer: NodeJS.Timeout;
+    
+    if (isInView && count < value) {
       const duration = 2000;
       const steps = 60;
       const increment = value / steps;
-      let current = 0;
+      let current = count;
 
-      const timer = setInterval(() => {
+      timer = setInterval(() => {
         current += increment;
         if (current >= value) {
           setCount(value);
@@ -51,16 +33,20 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
           setCount(Math.floor(current));
         }
       }, duration / steps);
-
-      return () => clearInterval(timer);
     }
-  }, [isInView, value]);
+
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [isInView, value, count]);
 
   return (
-    <span ref={ref}>
-      {count}
-      {suffix}
-    </span>
+    <div ref={containerRef} className="inline-block">
+      <span>
+        {count.toLocaleString()}
+        {suffix}
+      </span>
+    </div>
   );
 }
 
@@ -118,7 +104,7 @@ export default function Stats() {
 
               {/* Stats - Horizontal Layout */}
               <div className="flex items-start gap-4 md:gap-8">
-                {stats.map((stat, index) => {
+                {statsConfig.map((stat, index) => {
                   const Icon = stat.icon;
                   return (
                     <motion.div
@@ -150,7 +136,7 @@ export default function Stats() {
                         {stat.label}
                       </div>
                       {/* Vertical Divider */}
-                      {index < stats.length - 1 && (
+                      {index < statsConfig.length - 1 && (
                         <div className="absolute right-0 top-0 bottom-0 w-px bg-white/10 -mr-2 md:-mr-4" />
                       )}
                     </motion.div>
