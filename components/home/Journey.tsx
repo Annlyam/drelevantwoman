@@ -1,29 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, Settings, Workflow, BadgeCheck, Rocket } from "lucide-react";
+import { UserPlus, Handshake, BookOpen, TrendingUp } from "lucide-react";
 import Link from "next/link";
 
 const journeySteps = [
   {
-    icon: Search,
-    secondaryIcon: Settings,
-    title: "Research and Analysis",
+    icon: UserPlus,
+    title: "Join",
     number: "01",
   },
   {
-    icon: Workflow,
-    title: "Design Execution",
+    icon: Handshake,
+    title: "Connect",
     number: "02",
   },
   {
-    icon: BadgeCheck,
-    title: "Quality Assurance",
+    icon: BookOpen,
+    title: "Learn",
     number: "03",
   },
   {
-    icon: Rocket,
-    title: "Delivery Completion",
+    icon: TrendingUp,
+    title: "Grow",
     number: "04",
   },
 ];
@@ -42,8 +41,8 @@ export default function Journey() {
         >
           <div className="flex items-center gap-2 mb-4">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-              Unveiling Our Crafting{" "}
-              <span className="text-[#f9f871]">Work Process</span>
+              Your Journey with{" "}
+              <span className="text-[#f9f871]">The Relevant Woman</span>
             </h2>
             <div className="w-3 h-3 bg-[#f9f871] rotate-45" />
           </div>
@@ -53,9 +52,8 @@ export default function Journey() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {journeySteps.map((step, index) => {
             const Icon = step.icon;
-            const SecondaryIcon = step.secondaryIcon;
             // Map steps to relevant pages
-            const stepLinks = ["/about", "/academy", "/store", "/contact-us"];
+            const stepLinks = ["/become-a-member", "/events", "/academy", "/library"];
             return (
               <Link
                 key={index}
@@ -98,31 +96,11 @@ export default function Journey() {
                 {/* Icon - centered */}
                 <div className="flex-1 flex items-center justify-center mb-8 relative z-10">
                   <div className="relative">
-                    {SecondaryIcon ? (
-                      <div className="relative flex items-center justify-center">
-                        <Icon
-                          size={56}
-                          className="text-white"
-                          strokeWidth={1.5}
-                          fill="none"
-                        />
-                        <SecondaryIcon
-                          size={28}
-                          className="text-white absolute -bottom-2 -right-2"
-                          strokeWidth={1.5}
-                          fill="none"
-                        />
-                      </div>
-                    ) : (
-                      <Icon
-                        size={56}
-                        className="text-white"
-                        strokeWidth={1.5}
-                        fill="none"
-                      />
-                    )}
-                  </div>
-                </div>
+                   Icon
+                    size={56}
+                    className="text-white"
+                    strokeWidth={1.5}
+                  /
 
                 {/* Title at bottom-left */}
                 <h3 className="text-xl font-bold text-white relative z-10">
