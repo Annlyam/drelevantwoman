@@ -18,7 +18,7 @@ export const statsConfig: StatItem[] = [
   },
   {
     icon: Smile,
-    value: 1200,
+    value: 1300,
     suffix: "+",
     label: "Happy Community Members",
     color: "#f9f871",
