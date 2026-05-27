@@ -7,36 +7,50 @@ import Footer from "@/components/shared/Footer";
 import EventCard, { Event } from "@/components/events/EventCard";
 import { Calendar, MapPin, Users, TrendingUp } from "lucide-react";
 import Link from "next/link";
+import { getEventStatus } from "@/lib/utils";
 // Import event data
 import eventData from "@/lib/data/eventData.json";
 
 const allEvents: Event[] = (eventData as Event[]).filter((event) => !event.hidden);
 
-type FilterType = "all" | "popular" | "upcoming" | "recent";
+type FilterType = "all" | "popular" | "upcoming" | "past" | "recent";
 
 export default function EventsPage() {
-  const [activeFilter, setActiveFilter] = useState<FilterType>("all");
+  const [activeFilter, setActiveFilter] = useState<FilterType>("upcoming");
 
   const filteredEvents = useMemo(() => {
+    // Sort events: upcoming first by date, then past events
+    const sortedEvents = [...allEvents].sort((a, b) => {
+      const statusA = getEventStatus(a.date, a.time);
+      const statusB = getEventStatus(b.date, b.time);
+
+      // Upcoming events come first
+      if (statusA !== statusB) {
+        return statusA === "upcoming" ? -1 : 1;
+      }
+
+      // Within same status, sort by date
+      return new Date(`${a.date}T${a.time}`).getTime() - new Date(`${b.date}T${b.time}`).getTime();
+    });
+
     switch (activeFilter) {
       case "popular":
-        return allEvents.filter(
+        return sortedEvents.filter(
           (event) =>
             event.capacity &&
             event.registered &&
             event.registered / event.capacity > 0.5,
         );
       case "upcoming":
-        return allEvents.filter((event) => event.status === "upcoming");
+        return sortedEvents.filter((event) => getEventStatus(event.date, event.time) === "upcoming");
+      case "past":
+        return sortedEvents.filter((event) => getEventStatus(event.date, event.time) === "past");
       case "recent":
-        return allEvents
-          .filter((event) => event.status === "upcoming")
-          .sort(
-            (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
-          )
+        return sortedEvents
+          .filter((event) => getEventStatus(event.date, event.time) === "upcoming")
           .slice(0, 6);
       default:
-        return allEvents;
+        return sortedEvents;
     }
   }, [activeFilter]);
 
@@ -54,11 +68,13 @@ export default function EventsPage() {
   // Generate structured data for events listing
   const siteUrl =
     process.env.NEXT_PUBLIC_SITE_URL || "https://drelevantwoman.vercel.app";
+  const upcomingEvents = allEvents.filter(
+    (e) => getEventStatus(e.date, e.time) === "upcoming"
+  );
   const eventsStructuredData = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    itemListElement: allEvents
-      .filter((e) => e.status === "upcoming")
+    itemListElement: upcomingEvents
       .slice(0, 10)
       .map((event, index) => ({
         "@type": "ListItem",
@@ -212,10 +228,10 @@ export default function EventsPage() {
             {/* Filter Tabs */}
             <div className="flex flex-wrap gap-3">
               {[
-                { id: "all", label: "All Events" },
-                { id: "popular", label: "Popular" },
                 { id: "upcoming", label: "Upcoming" },
-                { id: "recent", label: "Recent" },
+                { id: "past", label: "Past Events" },
+                { id: "popular", label: "Popular" },
+                { id: "all", label: "All Events" },
               ].map((filter) => (
                 <button
                   key={filter.id}
