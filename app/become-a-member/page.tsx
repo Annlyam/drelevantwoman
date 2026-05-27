@@ -4,8 +4,8 @@ import Footer from "@/components/shared/Footer";
 import Navigation from "@/components/shared/Navigation";
 import { motion } from "framer-motion";
 import { useForm, Controller } from "react-hook-form";
-import { User, CheckCircle, ArrowRight } from "lucide-react";
-import PhoneInput from "react-phone-number-input";
+import { User, CheckCircle, ArrowRight, AlertCircle } from "lucide-react";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useState } from "react";
 
@@ -14,44 +14,70 @@ interface FormData {
   lastName: string;
   email: string;
   phone: string;
-  countryCode: string;
+  country: string;
 }
 
 export default function BecomeAMember() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const {
     register,
     handleSubmit,
     control,
-    formState: { errors },
-    watch,
+    reset,
+    formState: { errors, isValid },
   } = useForm<FormData>({
     defaultValues: {
       firstName: "",
       lastName: "",
       email: "",
       phone: "",
-      countryCode: "+234",
+      country: "",
     },
     mode: "onChange",
   });
 
-  const watchedData = watch();
-
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    setSubmitError("");
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      const response = await fetch("/api/members", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    // Reset form after showing success
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 5000);
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(
+          result?.error ||
+            result?.message ||
+            "We could not submit your membership application right now."
+        );
+      }
+
+      setIsSubmitted(true);
+      reset();
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "We could not submit your membership application right now."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const startAnotherApplication = () => {
+    setIsSubmitted(false);
+    setSubmitError("");
   };
 
   return (
@@ -113,6 +139,13 @@ export default function BecomeAMember() {
                   Thank you for your interest in becoming a member. We&apos;ll
                   review your application and get back to you soon.
                 </p>
+                <button
+                  type="button"
+                  onClick={startAnotherApplication}
+                  className="mt-8 inline-flex items-center justify-center px-6 py-3 bg-[#f9f871] text-[#3a225c] font-bold rounded-lg hover:bg-[#f9f871]/90 transition-colors"
+                >
+                  Submit Another Application
+                </button>
               </motion.div>
             ) : (
               <form
@@ -137,6 +170,9 @@ export default function BecomeAMember() {
                           value: 2,
                           message: "First name must be at least 2 characters",
                         },
+                        validate: (value) =>
+                          value.trim().length >= 2 ||
+                          "First name must be at least 2 characters",
                       })}
                       className={`w-full px-4 py-3 bg-white/10 border rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 transition-all ${
                         errors.firstName
@@ -168,6 +204,9 @@ export default function BecomeAMember() {
                           value: 2,
                           message: "Last name must be at least 2 characters",
                         },
+                        validate: (value) =>
+                          value.trim().length >= 2 ||
+                          "Last name must be at least 2 characters",
                       })}
                       className={`w-full px-4 py-3 bg-white/10 border rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 transition-all ${
                         errors.lastName
@@ -197,6 +236,7 @@ export default function BecomeAMember() {
                     id="email"
                     {...register("email", {
                       required: "Email address is required",
+                      setValueAs: (value) => value.trim(),
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                         message: "Please enter a valid email address",
@@ -231,8 +271,10 @@ export default function BecomeAMember() {
                       required: "Phone number is required",
                       validate: (value) => {
                         if (!value) return "Phone number is required";
-                        // Basic validation - react-phone-number-input handles format validation
-                        return true;
+                        return (
+                          isValidPhoneNumber(value) ||
+                          "Please enter a valid phone number"
+                        );
                       },
                     }}
                     render={({ field: { onChange, value } }) => (
@@ -267,10 +309,53 @@ export default function BecomeAMember() {
                   </p>
                 </div>
 
+                {/* Country */}
+                <div>
+                  <label
+                    htmlFor="country"
+                    className="block text-sm font-medium text-white/80 mb-2"
+                  >
+                    Country <span className="text-[#fc98ac]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="country"
+                    {...register("country", {
+                      required: "Country is required",
+                      setValueAs: (value) => value.trim(),
+                      minLength: {
+                        value: 2,
+                        message: "Country must be at least 2 characters",
+                      },
+                    })}
+                    className={`w-full px-4 py-3 bg-white/10 border rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 transition-all ${
+                      errors.country
+                        ? "border-red-500 focus:ring-red-500"
+                        : "border-white/20 focus:ring-[#f9f871]"
+                    }`}
+                    placeholder="Enter your country"
+                  />
+                  {errors.country && (
+                    <p className="mt-1 text-sm text-red-400">
+                      {errors.country.message}
+                    </p>
+                  )}
+                </div>
+
+                {submitError && (
+                  <div
+                    className="flex items-start gap-3 rounded-lg border border-red-400/30 bg-red-500/10 px-4 py-3 text-red-100"
+                    role="alert"
+                  >
+                    <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-300" />
+                    <p className="text-sm">{submitError}</p>
+                  </div>
+                )}
+
                 {/* Submit Button */}
                 <motion.button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !isValid}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#f9f871] text-[#3a225c] font-bold rounded-lg hover:bg-[#f9f871]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
