@@ -5,12 +5,54 @@ import { useState } from "react";
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle newsletter subscription
-    console.log("Subscribing:", email);
-    setEmail("");
+    
+    if (!email.trim()) {
+      setStatus("error");
+      setMessage("Please enter a valid email");
+      return;
+    }
+
+    setIsLoading(true);
+    setStatus("idle");
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus("success");
+        setMessage(data.message || "Successfully subscribed!");
+        setEmail("");
+        // Auto-reset success state after 5 seconds
+        setTimeout(() => {
+          setStatus("idle");
+          setMessage("");
+        }, 5000);
+      } else {
+        setStatus("error");
+        setMessage(data.error || "Subscription failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Newsletter subscription error:", error);
+      setStatus("error");
+      setMessage("An error occurred. Please try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -34,14 +76,38 @@ export default function NewsletterSignup() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Your email address"
           required
-          className="w-full px-4 py-3 bg-white rounded-lg text-[#3a225c] placeholder:text-[#3a225c]/60 focus:outline-none focus:ring-2 focus:ring-[#3a225c]"
+          disabled={isLoading}
+          className="w-full px-4 py-3 bg-white rounded-lg text-[#3a225c] placeholder:text-[#3a225c]/60 focus:outline-none focus:ring-2 focus:ring-[#3a225c] disabled:opacity-50 transition-opacity"
         />
-        <button
+        <motion.button
           type="submit"
-          className="w-full px-6 py-3 bg-[#3a225c] text-white font-bold rounded-lg hover:bg-[#914177] transition-colors duration-300"
+          disabled={isLoading}
+          className={`w-full px-6 py-3 font-bold rounded-lg transition-colors duration-300 ${
+            isLoading
+              ? "bg-[#999] text-white cursor-not-allowed"
+              : status === "success"
+              ? "bg-green-600 text-white"
+              : status === "error"
+              ? "bg-red-600 text-white"
+              : "bg-[#3a225c] text-white hover:bg-[#914177]"
+          }`}
+          whileHover={!isLoading ? { scale: 1.02 } : {}}
+          whileTap={!isLoading ? { scale: 0.98 } : {}}
         >
-          Subscribe
-        </button>
+          {isLoading ? "Subscribing..." : status === "success" ? "✓ Subscribed!" : status === "error" ? "✗ Try Again" : "Subscribe"}
+        </motion.button>
+        {message && (
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className={`text-sm font-medium text-center ${
+              status === "success" ? "text-green-600" : status === "error" ? "text-red-600" : "text-[#3a225c]/70"
+            }`}
+          >
+            {message}
+          </motion.p>
+        )}
       </form>
     </motion.div>
   );
