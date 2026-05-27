@@ -60,8 +60,8 @@ export default function CountdownTimer({
 
   if (timeLeft.isExpired) {
     return (
-      <div className={`text-sm text-white/60 ${className}`}>
-        Event has started
+      <div className={`text-sm font-semibold text-[#fc98ac] ${className}`}>
+        Event Ended
       </div>
     );
   }

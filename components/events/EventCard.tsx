@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Clock } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
-import { getIsFeatured } from "../../lib/utils";
+import { getIsFeatured, getEventStatus } from "../../lib/utils";
 
 export interface Event {
   id: string;
@@ -61,6 +61,8 @@ export default function EventCard({ event, index = 0 }: EventCardProps) {
     event.price === 0
       ? "FREE"
       : `${event.currency}${event.price}${event.price > 0 ? "" : ""}`;
+  const eventStatus = getEventStatus(event.date, event.time);
+  const isPast = eventStatus === "past";
 
   return (
     <motion.div
@@ -106,6 +108,19 @@ export default function EventCard({ event, index = 0 }: EventCardProps) {
                 Featured
               </div>
             )}
+
+            {/* Status Badge */}
+            <div
+              className={`absolute top-3 ${
+                getIsFeatured(event) ? "left-24" : "left-3"
+              } px-3 py-1 rounded-full text-xs font-bold ${
+                isPast
+                  ? "bg-white/30 text-white"
+                  : "bg-[#f9f871] text-[#3a225c]"
+              }`}
+            >
+              {isPast ? "Past" : "Upcoming"}
+            </div>
           </div>
 
           {/* Content */}
@@ -138,17 +153,27 @@ export default function EventCard({ event, index = 0 }: EventCardProps) {
             </div>
 
             {/* Countdown Timer - Prominent Display */}
-            <div className="bg-gradient-to-r from-[#f9f871]/20 to-[#fc98ac]/20 backdrop-blur-sm rounded-lg p-3 border-2 border-[#f9f871]/40">
+            <div
+              className={`rounded-lg p-3 border-2 ${
+                isPast
+                  ? "bg-gradient-to-r from-white/10 to-white/10 border-white/20"
+                  : "bg-gradient-to-r from-[#f9f871]/20 to-[#fc98ac]/20 border-[#f9f871]/40"
+              } backdrop-blur-sm`}
+            >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-semibold text-white/80 uppercase tracking-wide">
-                  Event Starts In
+                <span
+                  className={`text-xs font-semibold uppercase tracking-wide ${
+                    isPast ? "text-white/50" : "text-white/80"
+                  }`}
+                >
+                  {isPast ? "Event Ended" : "Event Starts In"}
                 </span>
               </div>
               <div className="flex items-center justify-center">
                 <CountdownTimer
                   targetDate={event.date}
                   targetTime={event.time}
-                  className="text-xl"
+                  className={isPast ? "line-through" : ""}
                 />
               </div>
             </div>
