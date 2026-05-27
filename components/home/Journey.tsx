@@ -95,12 +95,12 @@ export default function Journey() {
 
                 {/* Icon - centered */}
                 <div className="flex-1 flex items-center justify-center mb-8 relative z-10">
-                  <div className="relative">
-                   Icon
+                  <Icon
                     size={56}
                     className="text-white"
                     strokeWidth={1.5}
-                  /
+                  />
+                </div>
 
                 {/* Title at bottom-left */}
                 <h3 className="text-xl font-bold text-white relative z-10">
