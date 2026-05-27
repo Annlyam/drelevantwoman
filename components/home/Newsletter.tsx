@@ -24,12 +24,54 @@ const socialLinks = [
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Email submitted:", email);
-    setEmail("");
+    
+    if (!email.trim()) {
+      setStatus("error");
+      setMessage("Please enter a valid email");
+      return;
+    }
+
+    setIsLoading(true);
+    setStatus("idle");
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus("success");
+        setMessage(data.message || "Successfully subscribed!");
+        setEmail("");
+        // Auto-reset success state after 5 seconds
+        setTimeout(() => {
+          setStatus("idle");
+          setMessage("");
+        }, 5000);
+      } else {
+        setStatus("error");
+        setMessage(data.error || "Subscription failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Newsletter subscription error:", error);
+      setStatus("error");
+      setMessage("An error occurred. Please try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -113,17 +155,39 @@ export default function Newsletter() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your Email"
                   required
-                  className="flex-1 min-w-0 px-4 sm:px-6 py-3.5 sm:py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[#f9f871] focus:bg-white/20 transition-all duration-300 text-base"
+                  disabled={isLoading}
+                  className="flex-1 min-w-0 px-4 sm:px-6 py-3.5 sm:py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:border-[#f9f871] focus:bg-white/20 transition-all duration-300 text-base disabled:opacity-50"
                 />
                 <motion.button
                   type="submit"
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#f9f871] text-[#3a225c] font-bold rounded-lg hover:bg-[#ffbc5c] transition-all duration-300 shadow-lg touch-manipulation shrink-0"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  disabled={isLoading}
+                  className={`w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 font-bold rounded-lg transition-all duration-300 shadow-lg touch-manipulation shrink-0 ${
+                    isLoading
+                      ? "bg-[#999] text-[#3a225c] cursor-not-allowed"
+                      : status === "success"
+                      ? "bg-green-500 text-white"
+                      : status === "error"
+                      ? "bg-red-500 text-white"
+                      : "bg-[#f9f871] text-[#3a225c] hover:bg-[#ffbc5c]"
+                  }`}
+                  whileHover={!isLoading ? { scale: 1.05 } : {}}
+                  whileTap={!isLoading ? { scale: 0.95 } : {}}
                 >
-                  Submit
+                  {isLoading ? "Subscribing..." : status === "success" ? "✓ Subscribed!" : status === "error" ? "✗ Try Again" : "Submit"}
                 </motion.button>
               </form>
+              {message && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className={`mt-4 text-sm font-medium ${
+                    status === "success" ? "text-green-300" : status === "error" ? "text-red-300" : "text-white/80"
+                  }`}
+                >
+                  {message}
+                </motion.p>
+              )}
             </motion.div>
           </div>
         </motion.div>
