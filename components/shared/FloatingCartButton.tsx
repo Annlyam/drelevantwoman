@@ -1,27 +1,30 @@
-"use client";
+﻿"use client";
 
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "react-use-cart";
 import { ShoppingCart } from "lucide-react";
-import Link from "next/link";
+import CartDrawer from "./CartDrawer";
 
 export default function FloatingCartButton() {
   const { totalItems } = useCart();
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
-    <AnimatePresence>
-      {totalItems > 0 && (
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0, opacity: 0 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="fixed bottom-8 right-8 z-50"
-        >
-          <Link href="/cart">
+    <>
+      <AnimatePresence>
+        {totalItems > 0 && (
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="fixed bottom-8 right-8 z-50"
+          >
             <div className="relative">
               <button
+                onClick={() => setIsCartOpen(true)}
                 className="w-16 h-16 bg-[#fc98ac] hover:bg-[#fc98ac]/90 rounded-full shadow-2xl flex items-center justify-center transition-colors"
                 type="button"
                 aria-label="View cart"
@@ -38,9 +41,10 @@ export default function FloatingCartButton() {
                 </motion.div>
               )}
             </div>
-          </Link>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+    </>
   );
 }
