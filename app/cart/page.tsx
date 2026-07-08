@@ -4,18 +4,27 @@ import { motion } from "framer-motion";
 import Navigation from "@/components/shared/Navigation";
 import Footer from "@/components/shared/Footer";
 import { useCart } from "react-use-cart";
-import { ShoppingCart, Trash2, ArrowRight, ArrowLeft } from "lucide-react";
+import {
+  ShoppingCart,
+  Trash2,
+  ArrowRight,
+  ArrowLeft,
+  Minus,
+  Plus,
+  ShieldCheck,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Cart() {
-  const { items, removeItem, cartTotal, totalItems } = useCart();
+  const { items, removeItem, cartTotal, totalItems, updateItemQuantity } =
+    useCart();
 
   if (items.length === 0) {
     return (
       <main className="min-h-screen bg-[#3a225c] overflow-x-hidden">
         <Navigation />
-        <div className="pt-32 pb-20 min-h-screen flex items-center justify-center">
+        <div className="pt-32 pb-20 min-h-screen flex items-center justify-center px-4">
           <div className="text-center">
             <ShoppingCart className="w-24 h-24 text-white/30 mx-auto mb-6" />
             <h1 className="text-4xl font-bold text-white mb-4">
@@ -64,44 +73,37 @@ export default function Cart() {
           </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
               {items.map((item, index) => (
                 <motion.div
                   key={item.id}
-                  className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10"
+                  className="bg-white/5 backdrop-blur-sm rounded-xl p-5 md:p-6 border border-white/10"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.06 }}
                 >
-                  <div className="flex gap-4">
-                    {/* Product Image */}
+                  <div className="flex flex-col gap-4 sm:flex-row">
                     {item.image && (
-                      <div className="relative w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                      <div className="relative w-full sm:w-28 h-40 sm:h-28 rounded-lg overflow-hidden flex-shrink-0 bg-white/10">
                         <Image
                           src={item.image}
                           alt={item.name}
                           fill
                           className="object-cover"
-                          sizes="96px"
+                          sizes="(max-width: 640px) 100vw, 112px"
                         />
                       </div>
                     )}
 
-                    {/* Product Details */}
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-lg font-semibold text-white mb-2 line-clamp-2">
-                        {item.name}
-                      </h3>
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-start justify-between gap-4">
                         <div>
-                          <p className="text-xl font-bold text-[#f9f871]">
-                            ${item.price?.toFixed(2)}
-                          </p>
-                          {item.quantity && item.quantity > 1 && (
+                          <h3 className="text-lg font-semibold text-white mb-2 line-clamp-2">
+                            {item.name}
+                          </h3>
+                          {item.category && (
                             <p className="text-sm text-white/50">
-                              {item.quantity} × ${item.price?.toFixed(2)} = $
-                              {(item.price * item.quantity).toFixed(2)}
+                              {item.category}
                             </p>
                           )}
                         </div>
@@ -109,10 +111,50 @@ export default function Cart() {
                           onClick={() => removeItem(item.id)}
                           className="p-2 text-white/50 hover:text-red-400 hover:bg-white/5 rounded-lg transition-colors"
                           type="button"
-                          aria-label="Remove item"
+                          aria-label={`Remove ${item.name}`}
                         >
                           <Trash2 className="w-5 h-5" />
                         </button>
+                      </div>
+
+                      <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                        <div>
+                          <p className="text-xl font-bold text-[#f9f871]">
+                            ${item.price.toFixed(2)}
+                          </p>
+                          <p className="text-sm text-white/50">
+                            Line total: ${(item.itemTotal || item.price).toFixed(2)}
+                          </p>
+                        </div>
+
+                        <div className="inline-flex w-max items-center overflow-hidden rounded-lg border border-white/15">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              updateItemQuantity(
+                                item.id,
+                                Math.max((item.quantity || 1) - 1, 1)
+                              )
+                            }
+                            className="flex h-10 w-10 items-center justify-center text-white/80 transition-colors hover:bg-white/10"
+                            aria-label={`Decrease quantity for ${item.name}`}
+                          >
+                            <Minus className="h-4 w-4" />
+                          </button>
+                          <span className="flex h-10 min-w-12 items-center justify-center border-x border-white/15 px-4 text-sm font-bold text-white">
+                            {item.quantity || 1}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              updateItemQuantity(item.id, (item.quantity || 1) + 1)
+                            }
+                            className="flex h-10 w-10 items-center justify-center text-white/80 transition-colors hover:bg-white/10"
+                            aria-label={`Increase quantity for ${item.name}`}
+                          >
+                            <Plus className="h-4 w-4" />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -120,29 +162,29 @@ export default function Cart() {
               ))}
             </div>
 
-            {/* Order Summary */}
             <div className="lg:col-span-1">
               <motion.div
                 className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 sticky top-24"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+                transition={{ delay: 0.2 }}
               >
                 <h2 className="text-2xl font-bold text-white mb-6">
                   Order Summary
                 </h2>
 
-                {/* Summary Details */}
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between text-white/80">
                     <span>Subtotal ({totalItems} items)</span>
-                    <span className="font-semibold">
-                      ${cartTotal.toFixed(2)}
-                    </span>
+                    <span className="font-semibold">${cartTotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-white/80">
                     <span>Shipping</span>
-                    <span className="font-semibold">Free</span>
+                    <span className="font-semibold">Calculated later</span>
+                  </div>
+                  <div className="flex justify-between text-white/80">
+                    <span>Payment</span>
+                    <span className="font-semibold">At checkout</span>
                   </div>
                   <div className="pt-4 border-t border-white/10">
                     <div className="flex justify-between items-center">
@@ -156,7 +198,6 @@ export default function Cart() {
                   </div>
                 </div>
 
-                {/* Checkout Button */}
                 <Link href="/checkout">
                   <button
                     className="w-full px-6 py-4 bg-[#f9f871] text-[#3a225c] rounded-lg font-semibold hover:bg-[#f9f871]/90 transition-colors flex items-center justify-center gap-2"
@@ -167,15 +208,12 @@ export default function Cart() {
                   </button>
                 </Link>
 
-                {/* Continue Shopping */}
-                <Link href="/store">
-                  <button
-                    className="w-full mt-4 px-6 py-3 bg-white/5 text-white border border-white/20 rounded-lg font-semibold hover:bg-white/10 transition-colors"
-                    type="button"
-                  >
-                    Continue Shopping
-                  </button>
-                </Link>
+                <div className="mt-5 flex items-start gap-3 rounded-lg bg-white/5 p-4 text-sm text-white/65">
+                  <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#f9f871]" />
+                  <p>
+                    Your cart details will be reviewed before payment.
+                  </p>
+                </div>
               </motion.div>
             </div>
           </div>

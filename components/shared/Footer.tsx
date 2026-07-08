@@ -19,7 +19,7 @@ const footerLinks = {
   company: [
     { name: "About", href: "/about" },
     { name: "Team", href: "/about/team" },
-    { name: "Blog", href: "/media" },
+    { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact-us" },
   ],
   quickLinks: [
@@ -191,13 +191,13 @@ export default function Footer() {
           </p>
           <div className="flex space-x-6">
             <Link
-              href="#"
+              href="/privacy-policy"
               className="text-white/70 hover:text-[#f9f871] text-sm transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
-              href="#"
+              href="/terms-of-service"
               className="text-white/70 hover:text-[#f9f871] text-sm transition-colors"
             >
               Terms of Service

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, ShoppingBag, Sparkles } from "lucide-react";
+import { ShoppingBag, Sparkles } from "lucide-react";
 import Image from "next/image";
 
 export default function StoreHero() {
@@ -68,22 +68,6 @@ export default function StoreHero() {
               lifestyle items, we have something for everyone.
             </motion.p>
 
-            {/* Search */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/60 z-10" />
-                <input
-                  type="text"
-                  placeholder="Search products..."
-                  className="w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[#fc98ac] focus:border-[#fc98ac] transition-all"
-                />
-              </div>
-            </motion.div>
-
             {/* CTA Buttons */}
             <motion.div
               className="flex flex-wrap gap-4"
@@ -91,13 +75,19 @@ export default function StoreHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <button className="px-8 py-4 bg-[#f9f871] text-[#3a225c] rounded-xl font-semibold hover:bg-[#f9f871]/90 transition-all hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
+              <a
+                href="#products"
+                className="px-8 py-4 bg-[#f9f871] text-[#3a225c] rounded-xl font-semibold hover:bg-[#f9f871]/90 transition-all hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2"
+              >
                 <ShoppingBag className="w-5 h-5" />
                 Browse Products
-              </button>
-              <button className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border border-white/20 rounded-xl font-semibold hover:bg-white/20 transition-all hover:scale-105">
+              </a>
+              <a
+                href="#products"
+                className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border border-white/20 rounded-xl font-semibold hover:bg-white/20 transition-all hover:scale-105"
+              >
                 View Collections
-              </button>
+              </a>
             </motion.div>
           </motion.div>
 
