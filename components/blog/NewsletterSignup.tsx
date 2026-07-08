@@ -6,10 +6,18 @@ import { useState } from "react";
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle newsletter subscription
-    console.log("Subscribing:", email);
+    const response = await fetch("/api/newsletter/subscribe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+    const data = await response.json();
+    console.log(data);
     setEmail("");
   };
 
