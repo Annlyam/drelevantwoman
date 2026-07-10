@@ -1,10 +1,6 @@
 import { NextResponse } from "next/server";
-import { checkEmail, memberModel } from "./model";
+import { checkEmail, getAllMembers, RegisterMemberModel } from "./supabase.model";
 
-
-export async function GET(request: Request) {
-    return NextResponse.json({ message: "Hello World" });
-}
 
 export async function POST(request: Request) {
     try {
@@ -15,24 +11,36 @@ export async function POST(request: Request) {
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            return NextResponse.json({message: "Invalid email format" }, { status: 400 })
+            return NextResponse.json({status: 400, message: "Invalid email format" })
         }
 
         const normalizedEmail = email.toLowerCase().trim();
-        const rows  = await checkEmail(normalizedEmail);
+        // SQL Query to cheeck if email exist in the database
+        const rows  = await checkEmail(normalizedEmail); 
         const existingUser = rows;   
-        console.log(`This is the existing user => ...${existingUser}`);
-        
+
         if (existingUser) {
         return NextResponse.json({ existingUser: true });
         }
-
-        // SQL Query to store member
-        const member = await memberModel(firstName,lastName,normalizedEmail,phone,country);
+        // SQL Query to store RegisterMember
+        const member = await RegisterMemberModel(firstName, lastName, normalizedEmail, phone, country);
         return NextResponse.json({status: 201,success: true, member: member});
 
     } catch (error) {
         console.log(error)
         return NextResponse.json({ message: "Something went wrong" });
+    }
+}
+
+
+export async function GET() {
+    try {
+        // SQL Query GetAllMember
+        const data = await getAllMembers();
+        return NextResponse.json({ status: 200, success: true, members: data});
+
+    } catch (error) {
+        return NextResponse.json({status: 500, success: false, message: "Failed to fetch members"}
+        );
     }
 }

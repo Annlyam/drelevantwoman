@@ -1,35 +1,22 @@
 import { NextResponse } from "next/server";
-import pool from "@/lib/db";
+import { getMemberById } from "../supabase.model";
 
-export async function GET() {
+
+interface Params {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
+export async function GET(request: Request, {params}: Params) {
     try {
-        
-        const result = await pool.query(`
-            SELECT *
-            FROM members
-            ORDER BY id ASC
-        `);
+        const  { id } = await params;
+        // SQL Query to GetMemberById
+        const data = await getMemberById(id);
+        return NextResponse.json({ status: 200, success: true, members: data});
 
-        return NextResponse.json(
-            {
-                success: true,
-                members: result.rows,
-            },
-            {
-                status: 200,
-            }
-        );
     } catch (error) {
-        console.error(error);
-
-        return NextResponse.json(
-            {
-                success: false,
-                message: "Failed to fetch members",
-            },
-            {
-                status: 500,
-            }
+        return NextResponse.json({status: 500, success: false, message: "Failed to fetch members"}
         );
     }
 }
