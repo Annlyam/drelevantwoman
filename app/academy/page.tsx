@@ -8,7 +8,7 @@ import BookCard from "@/components/academy/BookCard";
 import ProgramCard from "@/components/academy/ProgramCard";
 import { booksData, programsData } from "@/lib/data/academyData";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Award, SlidersHorizontal, BookMarked, GradGraduationCap, Search } from "lucide-react";
+import { BookOpen, Award, Search } from "lucide-react";
 
 type FilterType = "all" | "books" | "programs";
 
