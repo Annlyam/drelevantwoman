@@ -11,6 +11,19 @@ export default function NewsletterSignup() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Handle newsletter subscription
+    const response = await fetch("/api/newsletter/subscribe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+    const data = await response.json();
+    console.log(data);
+    setEmail("");
+
     
     if (!email.trim()) {
       setStatus("error");
@@ -53,6 +66,7 @@ export default function NewsletterSignup() {
     } finally {
       setIsLoading(false);
     }
+
   };
 
   return (
