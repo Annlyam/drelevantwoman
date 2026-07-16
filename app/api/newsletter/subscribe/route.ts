@@ -1,35 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { subscribeToNewsletter } from '@/lib/email';
 
 /**
- * Newsletter Subscription API Endpoint
- * 
- * Backend Team Reference:
- * ========================
- * This endpoint handles newsletter email subscriptions.
- * 
- * Request:
- * - Method: POST
- * - Content-Type: application/json
- * - Body: { email: string }
- * 
- * Response:
- * - Success (200): { success: true, message: string }
- * - Error (400): { success: false, error: string }
- * - Server Error (500): { success: false, error: string }
- * 
- * Integration Notes:
- * - Connect to your email/newsletter service (Mailchimp, ConvertKit, custom DB, etc.)
- * - Validate email format before processing
- * - Handle duplicate emails gracefully
- * - Log subscription attempts for analytics
- * - Consider adding double opt-in flow for compliance
+ * Newsletter Subscription API Endpoint using Brevo
  */
-
 export async function POST(request: NextRequest) {
   try {
     const { email } = await request.json();
 
-    // Validate email
+    // Validate email existence
     if (!email || typeof email !== 'string') {
       return NextResponse.json(
         { success: false, error: 'Email is required' },
@@ -37,7 +16,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Basic email validation
+    // Basic email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return NextResponse.json(
@@ -46,32 +25,38 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Backend team should implement actual subscription logic here
-    // Example implementations:
-    // 1. Add to database
-    // 2. Call third-party email service (Mailchimp API, SendGrid, etc.)
-    // 3. Trigger welcome email
-    // 4. Log analytics event
+    console.log('[Newsletter] Attempting subscription for:', email);
 
-    console.log('[Newsletter] New subscription:', email);
+    // Call Brevo subscription service
+    await subscribeToNewsletter(email);
 
-    // Placeholder success response
-    // Replace this with actual backend integration
     return NextResponse.json(
       { 
         success: true, 
-        message: 'Successfully subscribed to our newsletter!' 
+        message: 'Successfully subscribed to our newsletter! 💜' 
       },
       { status: 200 }
     );
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('[Newsletter API Error]:', error);
     
+    // Check if it's already registered or has another specific error message
+    const errorMessage = error.message || '';
+    if (errorMessage.toLowerCase().includes('already exist') || errorMessage.toLowerCase().includes('duplicate')) {
+      return NextResponse.json(
+        { 
+          success: false, 
+          error: 'This email is already subscribed to our newsletter!' 
+        },
+        { status: 400 }
+      );
+    }
+
     return NextResponse.json(
       { 
         success: false, 
-        error: 'An error occurred while processing your subscription. Please try again.' 
+        error: 'An error occurred while processing your subscription. Please try again later.' 
       },
       { status: 500 }
     );
