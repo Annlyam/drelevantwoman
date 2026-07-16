@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { checkEmail, getAllMembers, RegisterMemberModel } from "./supabase.model";
+import { sendWelcomeEmail } from "@/lib/brevo/welcome";
 
-
+// Register member
 export async function POST(request: Request) {
     try {
         const { firstName, lastName, email, phone, country } = await request.json();
@@ -15,15 +16,20 @@ export async function POST(request: Request) {
         }
 
         const normalizedEmail = email.toLowerCase().trim();
-        // SQL Query to cheeck if email exist in the database
-        const rows  = await checkEmail(normalizedEmail); 
-        const existingUser = rows;   
+
+        // SQL Query to check if email exist in the database
+        const rows  = await checkEmail(normalizedEmail);
+        const existingUser = rows;
 
         if (existingUser) {
         return NextResponse.json({ existingUser: true });
         }
+
         // SQL Query to store RegisterMember
         const member = await RegisterMemberModel(firstName, lastName, normalizedEmail, phone, country);
+        
+        // Send welcome email to newly registered members
+        await sendWelcomeEmail(firstName, normalizedEmail)
         return NextResponse.json({status: 201,success: true, member: member});
 
     } catch (error) {
@@ -32,7 +38,7 @@ export async function POST(request: Request) {
     }
 }
 
-
+//Get all Registered members
 export async function GET() {
     try {
         // SQL Query GetAllMember

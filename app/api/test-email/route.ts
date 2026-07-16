@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { brevo } from "@/lib/brevo/client";
 
+
 export async function GET() {
     try {
         const response = await brevo.transactionalEmails.sendTransacEmail({
@@ -10,20 +11,28 @@ export async function GET() {
             },
             to: [
                 {
-                    email: "YOUR_EMAIL@gmail.com",
+                    email: "olatunjirauf081@gmail.com",
                 },
             ],
             subject: "Brevo Test",
             textContent: "if you're reading this, Brevo is working!"
         });
-        NextResponse.json({
+       
+        return NextResponse.json({
             success: true,
-            response,
+            response
         });
 
-    }catch(error){
+    } catch(error) {
         console.error(error);
 
-        return NextResponse.json({success:false, error, status: 500})
+        return NextResponse.json(
+        {
+            success: false,
+            error
+        },
+        {
+            status: 500,
+        });
     }
 }

@@ -14,9 +14,8 @@ export async function GET(request: Request, {params}: Params) {
         // SQL Query to GetMemberById
         const data = await getMemberById(id);
         return NextResponse.json({ status: 200, success: true, members: data});
-
     } catch (error) {
-        return NextResponse.json({status: 500, success: false, message: "Failed to fetch members"}
+        return NextResponse.json({success: false, message: "Failed to fetch members"},{status: 500}
         );
     }
 }
