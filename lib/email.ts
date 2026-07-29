@@ -32,10 +32,14 @@ export async function subscribeToNewsletter(email: string) {
       }),
     });
 
-    const data = await response.json();
+    // Brevo returns 204 No Content when contact already exists and updateEnabled=true.
+    // Only parse JSON when the response actually has a body to avoid
+    // "Unexpected end of JSON input" crash on empty responses.
+    const contentType = response.headers.get("content-type") || "";
+    const hasBody = response.status !== 204 && contentType.includes("application/json");
+    const data = hasBody ? await response.json() : {};
 
     if (!response.ok) {
-      // If the email is already in the list or has another error
       throw new Error(data.message || `Brevo returned status code ${response.status}`);
     }
 
@@ -207,7 +211,9 @@ export async function sendWelcomeEmail(email: string, firstName: string, lastNam
       }),
     });
 
-    const data = await response.json();
+    const contentType = response.headers.get("content-type") || "";
+    const hasBody = response.status !== 204 && contentType.includes("application/json");
+    const data = hasBody ? await response.json() : {};
 
     if (!response.ok) {
       throw new Error(data.message || `Brevo returned status code ${response.status}`);
