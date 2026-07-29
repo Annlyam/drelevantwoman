@@ -1,0 +1,20 @@
+   on vercel logs 
+
+2026-07-29 04:35:25.179 [info] [Newsletter] Attempting subscription for: luzzylugard@gmail.com
+2026-07-29 04:35:25.541 [error] [Brevo Newsletter Error]: SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at a (.next/server/chunks/[root-of-the-server]__8a11d573._.js:1:1642)
+    at async w (.next/server/chunks/[root-of-the-server]__8a11d573._.js:126:1247)
+2026-07-29 04:35:25.542 [error] [Newsletter API Error]: SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at a (.next/server/chunks/[root-of-the-server]__8a11d573._.js:1:1642)
+    at async w (.next/server/chunks/[root-of-the-server]__8a11d573._.js:126:1247)
+
+on the browser console 
+
+b3d1d0b96906687d.js:1  POST https://www.drelevantwoman.com/api/newsletter/subscribe 500 (Internal Server Error)
+
+
+on page
+
+An error occurred while processing your subscription. Please try again later
