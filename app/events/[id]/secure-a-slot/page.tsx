@@ -10,7 +10,9 @@ import eventData from "@/lib/data/eventData.json";
 import { CheckCircle, X, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { use, useState } from "react";
+import { use, useState, useEffect } from "react";
+import { client } from "@/sanity/lib/client";
+import { getEventsQuery } from "@/sanity/lib/queries";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,8 +20,40 @@ interface PageProps {
 
 export default function SecureASlotPage({ params }: PageProps) {
   const { id } = use(params);
-  const events = eventData as Event[];
-  const event = events.find((e) => e.id === id);
+  
+  const [event, setEvent] = useState<Event | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEvent = async () => {
+      try {
+        const sanityEvents = await client.fetch(getEventsQuery);
+        if (sanityEvents && sanityEvents.length > 0) {
+          const mappedEvents = sanityEvents.map((e: any) => ({
+            ...e,
+            date: e.date ? e.date.split("T")[0] : "",
+            time: e.date ? e.date.split("T")[1]?.slice(0, 5) : "",
+            registered: e.registeredCount,
+            id: e.slug || e.id,
+          }));
+          const sanityEvent = mappedEvents.find((e: Event) => e.id === id);
+          if (sanityEvent) {
+            setEvent(sanityEvent);
+            setIsLoading(false);
+            return;
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch events from Sanity:", error);
+      }
+      
+      const staticEvents = eventData as Event[];
+      const foundEvent = staticEvents.find((e) => e.id === id);
+      if (foundEvent) setEvent(foundEvent);
+      setIsLoading(false);
+    };
+    fetchEvent();
+  }, [id]);
 
   const [currentStep, setCurrentStep] = useState<1 | 2>(1);
   const [slotQuantity, setSlotQuantity] = useState(1);
@@ -30,6 +64,10 @@ export default function SecureASlotPage({ params }: PageProps) {
     phone: "",
     countryCode: "+234", // Default to Nigeria
   });
+
+  if (isLoading) {
+    return <div className="min-h-screen bg-[#3a225c] flex items-center justify-center text-white">Loading...</div>;
+  }
 
   if (!event) {
     notFound();

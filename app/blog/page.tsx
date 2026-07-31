@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/shared/Navigation";
 import Footer from "@/components/shared/Footer";
@@ -7,6 +8,8 @@ import BlogHero from "@/components/blog/BlogHero";
 import PopularTags from "@/components/blog/PopularTags";
 import BlogPostCard from "@/components/blog/BlogPostCard";
 import NewsletterSignup from "@/components/blog/NewsletterSignup";
+import { client } from "@/sanity/lib/client";
+import { getBlogPostsQuery } from "@/sanity/lib/queries";
 
 // Dummy blog posts related to The Relevant Woman themes
 const blogPosts = {
@@ -152,6 +155,21 @@ const blogPosts = {
 };
 
 export default function Blog() {
+  const [sanityPosts, setSanityPosts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const posts = await client.fetch(getBlogPostsQuery);
+        if (posts && posts.length > 0) {
+          setSanityPosts(posts);
+        }
+      } catch (error) {
+        console.error("Failed to fetch blog posts from Sanity:", error);
+      }
+    };
+    fetchPosts();
+  }, []);
   return (
     <main className="min-h-screen bg-[#3a225c] overflow-x-hidden">
       <Navigation />

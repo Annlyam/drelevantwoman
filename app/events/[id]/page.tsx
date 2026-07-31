@@ -12,16 +12,40 @@ import {
   generateEventStructuredData,
 } from "../metadata";
 
+import { client } from "@/sanity/lib/client";
+import { getEventsQuery } from "@/sanity/lib/queries";
+
 interface PageProps {
   params: Promise<{ id: string }>;
+}
+
+async function getEventData(id: string): Promise<Event | undefined> {
+  try {
+    const sanityEvents = await client.fetch(getEventsQuery);
+    if (sanityEvents && sanityEvents.length > 0) {
+      const mappedEvents = sanityEvents.map((e: any) => ({
+        ...e,
+        date: e.date ? e.date.split("T")[0] : "",
+        time: e.date ? e.date.split("T")[1]?.slice(0, 5) : "",
+        registered: e.registeredCount,
+        id: e.slug || e.id,
+      }));
+      const sanityEvent = mappedEvents.find((e: Event) => e.id === id);
+      if (sanityEvent) return sanityEvent;
+    }
+  } catch (error) {
+    console.error("Failed to fetch events from Sanity:", error);
+  }
+  
+  const events = eventData as Event[];
+  return events.find((e) => e.id === id);
 }
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { id } = await params;
-  const events = eventData as Event[];
-  const event = events.find((e) => e.id === id);
+  const event = await getEventData(id);
 
   if (!event) {
     return {
@@ -34,8 +58,7 @@ export async function generateMetadata({
 
 export default async function EventDetailPage({ params }: PageProps) {
   const { id } = await params;
-  const events = eventData as Event[];
-  const event = events.find((e) => e.id === id);
+  const event = await getEventData(id);
 
   if (!event) {
     notFound();

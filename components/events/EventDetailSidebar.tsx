@@ -5,13 +5,14 @@ import { Calendar, CheckCircle, Clock } from "lucide-react";
 import { Event } from "./EventCard";
 import EventCard from "./EventCard";
 import CountdownTimer from "./CountdownTimer";
-import eventData from "@/lib/data/eventData.json";
+import staticEventData from "@/lib/data/eventData.json";
 
 interface EventDetailSidebarProps {
   event: Event;
+  allEvents?: typeof staticEventData;
 }
 
-export default function EventDetailSidebar({ event }: EventDetailSidebarProps) {
+export default function EventDetailSidebar({ event, allEvents = staticEventData }: EventDetailSidebarProps) {
   const handleAddToCalendar = () => {
     const startDate = new Date(`${event.date}T${event.time}`);
     const endDate = event.endTime
@@ -41,7 +42,7 @@ export default function EventDetailSidebar({ event }: EventDetailSidebarProps) {
 
   // Show a curated event list in the sidebar instead of category-based matches.
   const relatedEvents = curatedEventIds
-    .map((id) => (eventData as Event[]).find((candidate) => candidate.id === id))
+    .map((id) => (allEvents as Event[]).find((candidate) => candidate.id === id))
     .filter((candidate): candidate is Event => Boolean(candidate))
     .filter((candidate) => candidate.id !== event.id);
 

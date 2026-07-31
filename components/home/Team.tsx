@@ -13,16 +13,20 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 // Import team data
-import teamMembers from "@/lib/data/teamData.json";
+import staticTeamMembers from "@/lib/data/teamData.json";
 import Link from "next/link";
 
-export default function Team() {
+interface TeamProps {
+  teamMembers?: typeof staticTeamMembers;
+}
+
+export default function Team({ teamMembers = staticTeamMembers }: TeamProps) {
   const [selectedMember, setSelectedMember] = useState<
-    (typeof teamMembers)[0] | null
+    (typeof staticTeamMembers)[0] | null
   >(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleCardClick = (member: (typeof teamMembers)[0]) => {
+  const handleCardClick = (member: (typeof staticTeamMembers)[0]) => {
     setSelectedMember(member);
     setIsModalOpen(true);
   };

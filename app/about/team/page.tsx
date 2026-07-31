@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/shared/Navigation";
 import Footer from "@/components/shared/Footer";
 import TeamPageCard from "@/components/team/TeamPageCard";
 import TeamModal from "@/components/home/TeamModal";
-import teamMembers from "@/lib/data/teamData.json";
+import staticTeamMembers from "@/lib/data/teamData.json";
 
 // Animation variants for scroll-triggered animations
 const containerVariants = {
@@ -52,11 +52,30 @@ const sectionTitleVariants = {
   },
 };
 
+import { client } from "@/sanity/lib/client";
+import { getTeamQuery } from "@/sanity/lib/queries";
+
 export default function TeamPage() {
   const [selectedMember, setSelectedMember] = useState<
-    (typeof teamMembers)[0] | null
+    (typeof staticTeamMembers)[0] | null
   >(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [teamMembers, setTeamMembers] = useState(staticTeamMembers);
+
+  // Fetch team from Sanity, fallback to static JSON
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const sanityTeam = await client.fetch(getTeamQuery);
+        if (sanityTeam && sanityTeam.length > 0) {
+          setTeamMembers(sanityTeam);
+        }
+      } catch (error) {
+        console.error("Failed to fetch team from Sanity:", error);
+      }
+    };
+    fetchTeam();
+  }, []);
 
   // Organize team members by hierarchy
   const organizedTeam = useMemo(() => {
@@ -75,7 +94,7 @@ export default function TeamPage() {
       mentors,
       restOfTeam,
     };
-  }, []);
+  }, [teamMembers]);
 
   const handleCardClick = (member: (typeof teamMembers)[0]) => {
     setSelectedMember(member);

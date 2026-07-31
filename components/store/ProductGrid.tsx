@@ -4,7 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { PackageSearch, RefreshCw, SlidersHorizontal } from "lucide-react";
 import ProductCard, { StoreProduct } from "./ProductCard";
-
+import { client } from "@/sanity/lib/client";
+import { getStoreProductsQuery } from "@/sanity/lib/queries";
 type ProductsResponse =
   | StoreProduct[]
   | {
@@ -53,23 +54,20 @@ export default function ProductGrid() {
       setError("");
 
       try {
-        const response = await fetch("/api/products", {
-          headers: {
-            Accept: "application/json",
-          },
-        });
-
-        if (!response.ok) {
-          if (response.status === 404) {
-            if (isMounted) setProducts([]);
-            return;
+        const sanityProducts = await client.fetch(getStoreProductsQuery);
+        
+        if (isMounted) {
+          if (sanityProducts && sanityProducts.length > 0) {
+            // Map the Sanity array format just in case it doesn't match perfectly
+            const mappedProducts = sanityProducts.map((p: any) => ({
+              ...p,
+              image: p.images?.[0] || null,
+            }));
+            setProducts(normalizeProducts(mappedProducts));
+          } else {
+            setProducts([]);
           }
-
-          throw new Error("Products could not be loaded right now.");
         }
-
-        const payload = (await response.json()) as ProductsResponse;
-        if (isMounted) setProducts(normalizeProducts(payload));
       } catch (loadError) {
         if (!isMounted) return;
         setProducts([]);

@@ -1,20 +1,57 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Navigation from "@/components/shared/Navigation";
 import Footer from "@/components/shared/Footer";
 import AcademyHero from "@/components/academy/AcademyHero";
 import BookCard from "@/components/academy/BookCard";
 import ProgramCard from "@/components/academy/ProgramCard";
-import { booksData, programsData } from "@/lib/data/academyData";
+import { booksData as staticBooks, programsData as staticPrograms } from "@/lib/data/academyData";
 import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, Award, Search } from "lucide-react";
+import { client } from "@/sanity/lib/client";
+import { getAcademyItemsQuery } from "@/sanity/lib/queries";
 
 type FilterType = "all" | "books" | "programs";
 
 export default function Academy() {
   const [activeTab, setActiveTab] = useState<FilterType>("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [booksData, setBooksData] = useState(staticBooks);
+  const [programsData, setProgramsData] = useState(staticPrograms);
+
+  useEffect(() => {
+    const fetchAcademyItems = async () => {
+      try {
+        const items = await client.fetch(getAcademyItemsQuery);
+        if (items && items.length > 0) {
+          const mappedBooks = items
+            .filter((item: any) => item.type === "book")
+            .map((item: any) => ({
+              ...item,
+              category: "Book",
+              rating: 5.0,
+              reviewsCount: 0,
+              author: { name: item.author || "The Relevant Woman", title: "Author", image: "" }
+            }));
+          const mappedPrograms = items
+            .filter((item: any) => item.type === "program" || item.type === "course")
+            .map((item: any) => ({
+              ...item,
+              category: "Program",
+              duration: "Self-paced",
+              level: "All Levels",
+              instructor: { name: item.author || "The Relevant Woman", role: "Instructor", image: "" }
+            }));
+          if (mappedBooks.length > 0) setBooksData(mappedBooks);
+          if (mappedPrograms.length > 0) setProgramsData(mappedPrograms);
+        }
+      } catch (error) {
+        console.error("Failed to fetch academy items:", error);
+      }
+    };
+    fetchAcademyItems();
+  }, []);
 
   const filteredBooks = useMemo(() => {
     return booksData.filter((book) =>

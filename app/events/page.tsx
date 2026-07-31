@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/shared/Navigation";
 import Footer from "@/components/shared/Footer";
@@ -11,12 +11,37 @@ import { getEventStatus } from "@/lib/utils";
 // Import event data
 import eventData from "@/lib/data/eventData.json";
 
-const allEvents: Event[] = (eventData as Event[]).filter((event) => !event.hidden);
+import { client } from "@/sanity/lib/client";
+import { getEventsQuery } from "@/sanity/lib/queries";
+
+const staticEvents: Event[] = (eventData as Event[]).filter((event) => !event.hidden);
 
 type FilterType = "all" | "popular" | "upcoming" | "past" | "recent";
 
 export default function EventsPage() {
+  const [allEvents, setAllEvents] = useState<Event[]>(staticEvents);
   const [activeFilter, setActiveFilter] = useState<FilterType>("upcoming");
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const sanityEvents = await client.fetch(getEventsQuery);
+        if (sanityEvents && sanityEvents.length > 0) {
+          const mappedEvents = sanityEvents.map((e: any) => ({
+            ...e,
+            date: e.date ? e.date.split("T")[0] : "",
+            time: e.date ? e.date.split("T")[1]?.slice(0, 5) : "",
+            registered: e.registeredCount,
+            id: e.slug || e.id,
+          }));
+          setAllEvents(mappedEvents.filter((event: Event) => !event.hidden));
+        }
+      } catch (error) {
+        console.error("Failed to fetch events from Sanity:", error);
+      }
+    };
+    fetchEvents();
+  }, []);
 
   const filteredEvents = useMemo(() => {
     // Sort events: upcoming first by date, then past events
@@ -52,7 +77,7 @@ export default function EventsPage() {
       default:
         return sortedEvents;
     }
-  }, [activeFilter]);
+  }, [activeFilter, allEvents]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
