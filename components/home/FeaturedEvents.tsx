@@ -4,17 +4,21 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Calendar, ArrowRight } from "lucide-react";
 import EventCard, { Event } from "@/components/events/EventCard";
-import eventData from "@/lib/data/eventData.json";
+import staticEventData from "@/lib/data/eventData.json";
 import { getIsFeatured } from "@/lib/utils";
 
-export default function FeaturedEvents() {
+interface FeaturedEventsProps {
+  events?: typeof staticEventData;
+}
+
+export default function FeaturedEvents({ events = staticEventData }: FeaturedEventsProps) {
   const homepageFeaturedEventIds = new Set([
     "international-womens-day-2025",
     "celebration-of-international-womens-month",
   ]);
 
   // Get top 3 featured events
-  const featuredEvents = (eventData as Event[])
+  const featuredEvents = (events as Event[])
     .filter(
       (event) =>
         event.hidden !== true &&

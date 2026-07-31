@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  optimizeFonts: false,
   async redirects() {
     return [
       {
@@ -15,6 +16,14 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
     ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+    ],
   },
 };
 
