@@ -225,3 +225,67 @@ export async function sendWelcomeEmail(email: string, firstName: string, lastNam
     throw error;
   }
 }
+
+/**
+ * Creates and sends an email campaign to the newsletter list via Brevo.
+ */
+export async function sendCampaignEmail(subject: string, htmlContent: string) {
+  if (!BREVO_API_KEY) {
+    console.warn("[Brevo Warning]: BREVO_API_KEY is not configured.");
+    return { success: true, message: "Mock campaign sent successful (API Key missing)." };
+  }
+
+  const listId = parseInt(BREVO_NEWSLETTER_LIST_ID || "1", 10);
+
+  try {
+    // 1. Create the campaign
+    const createResponse = await fetch("https://api.brevo.com/v3/emailCampaigns", {
+      method: "POST",
+      headers: {
+        "api-key": BREVO_API_KEY,
+        "content-type": "application/json",
+        accept: "application/json",
+      },
+      body: JSON.stringify({
+        sender: {
+          name: "The Relevant Woman",
+          email: EMAIL_FROM,
+        },
+        name: `Sanity Campaign - ${subject} - ${new Date().toISOString()}`,
+        htmlContent: htmlContent,
+        subject: subject,
+        recipients: {
+          listIds: [listId],
+        },
+      }),
+    });
+
+    const createData = await createResponse.json();
+
+    if (!createResponse.ok) {
+      throw new Error(createData.message || `Brevo returned status code ${createResponse.status} on create`);
+    }
+
+    const campaignId = createData.id;
+
+    // 2. Send the campaign immediately
+    const sendResponse = await fetch(`https://api.brevo.com/v3/emailCampaigns/${campaignId}/sendNow`, {
+      method: "POST",
+      headers: {
+        "api-key": BREVO_API_KEY,
+        "content-type": "application/json",
+        accept: "application/json",
+      },
+    });
+
+    if (!sendResponse.ok && sendResponse.status !== 204) {
+      const sendData = await sendResponse.json();
+      throw new Error(sendData.message || `Brevo returned status code ${sendResponse.status} on send`);
+    }
+
+    return { success: true, campaignId };
+  } catch (error) {
+    console.error("[Brevo Campaign Error]:", error);
+    throw error;
+  }
+}
