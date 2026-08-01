@@ -6,6 +6,7 @@ import { Event } from "./EventCard";
 import EventCard from "./EventCard";
 import CountdownTimer from "./CountdownTimer";
 import staticEventData from "@/lib/data/eventData.json";
+import Link from "next/link";
 
 interface EventDetailSidebarProps {
   event: Event;
@@ -66,6 +67,14 @@ export default function EventDetailSidebar({ event, allEvents = staticEventData 
             className="text-xl"
           />
         </div>
+
+        {/* Register Now CTA */}
+        <Link
+          href={`/events/${event.id}/register`}
+          className="mt-4 w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-[#f9f871] text-[#3a225c] font-bold rounded-lg hover:bg-[#ffbc5c] transition-colors text-base shadow-lg"
+        >
+          Register Now →
+        </Link>
       </motion.div>
 
       {/* Add to Calendar */}
