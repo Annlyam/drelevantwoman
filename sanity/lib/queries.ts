@@ -18,16 +18,25 @@ export const getTeamQuery = groq`
 
 export const getEventsQuery = groq`
   *[_type == "event"] | order(date desc) {
-    "id": _id,
+    "id": slug.current,
+    "_id": _id,
     title,
     "slug": slug.current,
     date,
+    endTime,
+    venue,
     location,
+    zoomLink,
     category,
     capacity,
     registeredCount,
     isFeatured,
+    hidden,
     status,
+    price,
+    currency,
+    tags,
+    registrationEndDate,
     "image": image.asset->url,
     description
   }

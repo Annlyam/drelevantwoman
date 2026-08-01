@@ -13,7 +13,7 @@ export const eventSchema = defineType({
     }),
     defineField({
       name: 'slug',
-      title: 'Slug',
+      title: 'Slug (URL ID)',
       type: 'slug',
       options: {
         source: 'title',
@@ -22,23 +22,63 @@ export const eventSchema = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Upcoming', value: 'upcoming' },
+          { title: 'Past', value: 'past' },
+          { title: 'Cancelled', value: 'cancelled' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'upcoming',
+    }),
+    defineField({
       name: 'date',
-      title: 'Event Date',
+      title: 'Event Date & Start Time',
+      description: 'Date and start time of the event.',
       type: 'datetime',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'location',
-      title: 'Location',
+      name: 'endTime',
+      title: 'End Time (HH:MM)',
+      description: 'End time in 24-hour format, e.g. 17:00',
       type: 'string',
     }),
     defineField({
-      name: 'category',
-      title: 'Category',
+      name: 'venue',
+      title: 'Venue / Platform',
+      description: 'e.g. Zoom Webinar, Lagos Conference Center, Virtual (Online)',
       type: 'string',
-      options: {
-        list: ['Conference', 'Webinar', 'Workshop', 'Meetup', 'Other'],
-      },
+    }),
+    defineField({
+      name: 'location',
+      title: 'Location',
+      description: 'City and country, e.g. Lagos, Nigeria or Virtual Event',
+      type: 'string',
+    }),
+    defineField({
+      name: 'zoomLink',
+      title: 'Zoom / Meeting Link',
+      description: 'The full Zoom or Google Meet URL for virtual events. This will be included in the registration confirmation email.',
+      type: 'url',
+    }),
+    defineField({
+      name: 'price',
+      title: 'Price',
+      description: 'Set to 0 for free events.',
+      type: 'number',
+      initialValue: 0,
+    }),
+    defineField({
+      name: 'currency',
+      title: 'Currency Symbol',
+      description: 'e.g. ₦ or $',
+      type: 'string',
+      initialValue: '₦',
     }),
     defineField({
       name: 'capacity',
@@ -52,32 +92,66 @@ export const eventSchema = defineType({
       initialValue: 0,
     }),
     defineField({
+      name: 'registrationEndDate',
+      title: 'Registration End Date',
+      type: 'date',
+    }),
+    defineField({
       name: 'isFeatured',
-      title: 'Is Featured',
+      title: 'Featured on Homepage?',
       type: 'boolean',
       initialValue: false,
     }),
     defineField({
-      name: 'status',
-      title: 'Status',
+      name: 'hidden',
+      title: 'Hidden?',
+      description: 'Hide this event from all listings.',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'category',
+      title: 'Category',
       type: 'string',
       options: {
-        list: ['upcoming', 'past'],
+        list: [
+          'Conference',
+          'Webinar',
+          'Workshop',
+          'Meetup',
+          'Education & Training',
+          'Finance & Empowerment',
+          'Leadership',
+          'Other',
+        ],
       },
-      initialValue: 'upcoming',
+    }),
+    defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: { layout: 'tags' },
     }),
     defineField({
       name: 'image',
-      title: 'Main Image',
+      title: 'Event Image',
       type: 'image',
-      options: {
-        hotspot: true,
-      },
+      options: { hotspot: true },
     }),
     defineField({
       name: 'description',
       title: 'Description',
+      description: 'Supports rich text (HTML allowed in body).',
       type: 'text',
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'date',
+      media: 'image',
+    },
+  },
 })
+
