@@ -1,104 +1,85 @@
-02:08:48.449 Running build in Washington, D.C., USA (East) – iad1
-02:08:48.450 Build machine configuration: 2 cores, 8 GB
-02:08:48.614 Cloning github.com/Annlyam/drelevantwoman (Branch: be2/admin-cms-setup, Commit: b94b7f9)
-02:08:50.702 Cloning completed: 2.088s
-02:08:50.869 Restored build cache from previous deployment (13RiCoTsutv5hV2hbA9f3xuEwPnx)
-02:08:51.128 Running "vercel build"
-02:08:51.146 Vercel CLI 58.1.0
-02:08:51.380 Installing dependencies...
-02:08:53.070 npm warn ERESOLVE overriding peer dependency
-02:08:53.071 npm warn While resolving: @portabletext/editor@7.10.13
-02:08:53.071 npm warn Found: react@19.2.3
-02:08:53.071 npm warn node_modules/react
-02:08:53.071 npm warn   react@"19.2.3" from the root project
-02:08:53.072 npm warn   58 more (@dnd-kit/accessibility, @dnd-kit/core, ...)
-02:08:53.072 npm warn
-02:08:53.072 npm warn Could not resolve dependency:
-02:08:53.072 npm warn peer react@"^19.2.7" from @portabletext/editor@7.10.13
-02:08:53.072 npm warn node_modules/@portabletext/editor
-02:08:53.072 npm warn   peer @portabletext/editor@"^7.10.13" from @portabletext/plugin-character-pair-decorator@8.0.41
-02:08:53.072 npm warn   node_modules/@portabletext/plugin-character-pair-decorator
-02:08:53.077 npm warn   9 more (@portabletext/plugin-dnd, ...)
-02:08:53.078 npm warn
-02:08:53.078 npm warn Conflicting peer dependency: react@19.2.8
-02:08:53.078 npm warn node_modules/react
-02:08:53.078 npm warn   peer react@"^19.2.7" from @portabletext/editor@7.10.13
-02:08:53.078 npm warn   node_modules/@portabletext/editor
-02:08:53.078 npm warn     peer @portabletext/editor@"^7.10.13" from @portabletext/plugin-character-pair-decorator@8.0.41
-02:08:53.079 npm warn     node_modules/@portabletext/plugin-character-pair-decorator
-02:08:53.079 npm warn     9 more (@portabletext/plugin-dnd, ...)
-02:08:54.408 npm warn ERESOLVE overriding peer dependency
-02:08:54.409 npm warn While resolving: @napi-rs/wasm-runtime@1.2.0
-02:08:54.410 npm warn Found: @emnapi/core@1.11.1
-02:08:54.410 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@emnapi/core
-02:08:54.410 npm warn   @emnapi/core@"1.11.1" from @rolldown/binding-wasm32-wasi@1.1.5
-02:08:54.410 npm warn   node_modules/@rolldown/binding-wasm32-wasi
-02:08:54.410 npm warn     optional @rolldown/binding-wasm32-wasi@"1.1.5" from rolldown@1.1.5
-02:08:54.410 npm warn     node_modules/rolldown
-02:08:54.410 npm warn
-02:08:54.410 npm warn Could not resolve dependency:
-02:08:54.410 npm warn peer @emnapi/core@"^2.0.0-alpha.3" from @napi-rs/wasm-runtime@1.2.0
-02:08:54.411 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@napi-rs/wasm-runtime
-02:08:54.411 npm warn   @napi-rs/wasm-runtime@"^1.1.6" from @rolldown/binding-wasm32-wasi@1.1.5
-02:08:54.411 npm warn   node_modules/@rolldown/binding-wasm32-wasi
-02:08:54.411 npm warn
-02:08:54.411 npm warn Conflicting peer dependency: @emnapi/core@2.0.0-alpha.3
-02:08:54.411 npm warn node_modules/@emnapi/core
-02:08:54.411 npm warn   peer @emnapi/core@"^2.0.0-alpha.3" from @napi-rs/wasm-runtime@1.2.0
-02:08:54.411 npm warn   node_modules/@rolldown/binding-wasm32-wasi/node_modules/@napi-rs/wasm-runtime
-02:08:54.411 npm warn     @napi-rs/wasm-runtime@"^1.1.6" from @rolldown/binding-wasm32-wasi@1.1.5
-02:08:54.411 npm warn     node_modules/@rolldown/binding-wasm32-wasi
-02:08:54.413 npm warn ERESOLVE overriding peer dependency
-02:08:54.413 npm warn While resolving: @napi-rs/wasm-runtime@1.2.0
-02:08:54.413 npm warn Found: @emnapi/runtime@1.11.1
-02:08:54.413 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@emnapi/runtime
-02:08:54.413 npm warn   @emnapi/runtime@"1.11.1" from @rolldown/binding-wasm32-wasi@1.1.5
-02:08:54.413 npm warn   node_modules/@rolldown/binding-wasm32-wasi
-02:08:54.413 npm warn     optional @rolldown/binding-wasm32-wasi@"1.1.5" from rolldown@1.1.5
-02:08:54.416 npm warn     node_modules/rolldown
-02:08:54.416 npm warn
-02:08:54.416 npm warn Could not resolve dependency:
-02:08:54.416 npm warn peer @emnapi/runtime@"^2.0.0-alpha.3" from @napi-rs/wasm-runtime@1.2.0
-02:08:54.416 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@napi-rs/wasm-runtime
-02:08:54.417 npm warn   @napi-rs/wasm-runtime@"^1.1.6" from @rolldown/binding-wasm32-wasi@1.1.5
-02:08:54.417 npm warn   node_modules/@rolldown/binding-wasm32-wasi
-02:08:54.417 npm warn
-02:08:54.417 npm warn Conflicting peer dependency: @emnapi/runtime@2.0.0-alpha.3
-02:08:54.417 npm warn node_modules/@emnapi/runtime
-02:08:54.417 npm warn   peer @emnapi/runtime@"^2.0.0-alpha.3" from @napi-rs/wasm-runtime@1.2.0
-02:08:54.417 npm warn   node_modules/@rolldown/binding-wasm32-wasi/node_modules/@napi-rs/wasm-runtime
-02:08:54.417 npm warn     @napi-rs/wasm-runtime@"^1.1.6" from @rolldown/binding-wasm32-wasi@1.1.5
-02:08:54.418 npm warn     node_modules/@rolldown/binding-wasm32-wasi
-02:08:55.930 
-02:08:55.931 added 16 packages, removed 19 packages, and changed 8 packages in 4s
-02:08:55.931 
-02:08:55.931 316 packages are looking for funding
-02:08:55.931   run `npm fund` for details
-02:08:55.970 Detected Next.js version: 16.1.1
-02:08:56.014 Running "npm run build"
-02:08:56.118 
-02:08:56.119 > drelevantwoman@0.1.0 build
-02:08:56.119 > next build
-02:08:56.119 
-02:08:57.208 ⚠ Invalid next.config.ts options detected: 
-02:08:57.208 ⚠     Unrecognized key(s) in object: 'optimizeFonts'
-02:08:57.208 ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
-02:08:57.232 ▲ Next.js 16.1.1 (Turbopack)
-02:08:57.233 
-02:08:57.272   Creating an optimized production build ...
-02:09:58.638 ✓ Compiled successfully in 61s
-02:09:58.650   Running TypeScript ...
-02:10:08.860 Failed to compile.
-02:10:08.861 
-02:10:08.861 ./next.config.ts:4:3
-02:10:08.862 Type error: Object literal may only specify known properties, and 'optimizeFonts' does not exist in type 'NextConfig'.
-02:10:08.862 
-02:10:08.862   2 |
-02:10:08.862   3 | const nextConfig: NextConfig = {
-02:10:08.862 > 4 |   optimizeFonts: false,
-02:10:08.862     |   ^
-02:10:08.863   5 |   async redirects() {
-02:10:08.863   6 |     return [
-02:10:08.863   7 |       {
-02:10:08.909 Next.js build worker exited with code: 1 and signal: null
-02:10:08.984 Error: Command "npm run build" exited with 1
+KeyboardInterrupt
+^C
+C:\Users\HP\Downloads\de-relevant>python send_certificates.py
+
+============================================================
+  TRW Graduation Email Sender   —   🚀 LIVE MODE
+============================================================
+
+  📨  Sending to kchinonso162@gmail.com (Kingsley Chinonso) ...
+  ✅  Sent → kchinonso162@gmail.com  (Kingsley Chinonso)
+
+============================================================
+  Done!  Sent: 1  |  Skipped (no email): 0  |  Skipped (no cert): 0
+============================================================
+
+
+C:\Users\HP\Downloads\de-relevant>python send_certificates.py
+
+============================================================
+  TRW Graduation Email Sender   —   🚀 LIVE MODE
+============================================================
+
+  📨  Sending to kchinonso162@gmail.com (Kingsley Chinonso) ...
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 514, in request
+    self.send(chunk)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 999, in send
+    self.sock.sendall(data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1237, in sendall
+    v = self.send(byte_view[count:])
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1206, in send
+    return self._sslobj.write(data)
+TimeoutError: The write operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\retry.py", line 490, in increment
+    raise reraise(type(error), error, _stacktrace)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 514, in request
+    self.send(chunk)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 999, in send
+    self.sock.sendall(data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1237, in sendall
+    v = self.send(byte_view[count:])
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1206, in send
+    return self._sslobj.write(data)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', TimeoutError('The write operation timed out'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\Downloads\de-relevant\send_certificates.py", line 220, in <module>
+    main()
+  File "C:\Users\HP\Downloads\de-relevant\send_certificates.py", line 211, in main
+    send_email(target_email, target_name, cert_path, magazine_path)
+  File "C:\Users\HP\Downloads\de-relevant\send_certificates.py", line 158, in send_email
+    resp = requests.post(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 659, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', TimeoutError('The write operation timed out'))
+
+C:\Users\HP\Downloads\de-relevant>
