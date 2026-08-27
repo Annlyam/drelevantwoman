@@ -61,7 +61,7 @@ export default function BookDetailPage({ params }: PageProps) {
                   What You&apos;ll Learn
                 </h2>
                 <div className="grid md:grid-cols-2 gap-4">
-                  {book.whatYouLearn.map((item, index) => (
+                  {book.whatYouLearn.map((item: string, index: number) => (
                     <div key={index} className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-[#fc98ac] flex-shrink-0 mt-0.5" />
                       <p className="text-white/80">{item}</p>
@@ -81,7 +81,7 @@ export default function BookDetailPage({ params }: PageProps) {
                   Key Takeaways
                 </h2>
                 <ul className="space-y-3">
-                  {book.keyTakeaways.map((takeaway, index) => (
+                  {book.keyTakeaways.map((takeaway: string, index: number) => (
                     <li
                       key={index}
                       className="flex items-start gap-3 text-white/80"
@@ -104,7 +104,7 @@ export default function BookDetailPage({ params }: PageProps) {
                   Table of Contents
                 </h2>
                 <div className="space-y-3">
-                  {book.chapters.map((chapter, index) => (
+                  {book.chapters.map((chapter: string, index: number) => (
                     <div
                       key={index}
                       className="bg-white/5 rounded-lg p-4 border border-white/10"

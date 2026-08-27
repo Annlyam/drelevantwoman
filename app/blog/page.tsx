@@ -177,24 +177,65 @@ export default function Blog() {
       <BlogHero />
       <PopularTags />
 
-      {/* What's New, Editor's Choice, and Previous Posts sections removed per request */}
-
-      {/* Newsletter CTA */}
-      <section className="py-10 md:py-24 bg-[#3a225c]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* The Relevant Woman Magazine Section */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            className="flex flex-col md:flex-row items-center gap-12 bg-gradient-to-br from-[#3a225c] to-[#5b1364] rounded-3xl p-8 md:p-12 shadow-2xl overflow-hidden relative"
           >
-            <button className="px-12 py-6 bg-[#f9f871] text-[#3a225c] font-bold text-lg rounded-lg hover:bg-[#ffbc5c] transition-all duration-300 mb-4 shadow-xl hover:shadow-2xl hover:scale-105">
-              Become a subscriber
-            </button>
-            <p className="text-white/80 text-base font-light">
-              Get all the latest posts delivered straight to your inbox.
-            </p>
+            {/* Decorative background elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#f9f871] rounded-full mix-blend-multiply filter blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#fc98ac] rounded-full mix-blend-multiply filter blur-3xl opacity-20 transform -translate-x-1/2 translate-y-1/2"></div>
+            
+            <div className="w-full md:w-1/3 flex justify-center relative z-10">
+              <div className="w-64 h-80 bg-white rounded-xl shadow-xl overflow-hidden transform -rotate-3 transition-transform hover:rotate-0 duration-500 border-4 border-white">
+                <img src="/assets/images/team/iveren_ann_lyam_founder_the_relevant_woman.jpg" alt="The Relevant Woman Magazine Cover" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                  <span className="text-white font-bold text-xl tracking-widest uppercase border-2 border-white px-4 py-2">Maiden Issue</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="w-full md:w-2/3 text-center md:text-left relative z-10">
+              <span className="inline-block px-4 py-1 bg-[#fc98ac]/20 text-[#fc98ac] rounded-full text-sm font-bold tracking-wider uppercase mb-4 border border-[#fc98ac]/30">Now Available</span>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">The Relevant Woman <span className="text-[#f9f871]">Magazine</span></h2>
+              <p className="text-white/80 text-lg md:text-xl mb-8 leading-relaxed max-w-2xl">
+                Get your hands on our highly anticipated Maiden Edition! Packed with exclusive interviews, leadership insights, and powerful stories from women making a difference.
+              </p>
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                <a 
+                  href="/assets/magazines/TRW_Maiden_Magazine.pdf" 
+                  download 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="px-8 py-4 bg-[#f9f871] text-[#3a225c] font-bold rounded-xl hover:bg-[#ffbc5c] hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-3"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Download Free Copy
+                </a>
+                <a 
+                  href="/assets/magazines/TRW_Maiden_Magazine.pdf"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="px-8 py-4 bg-white/10 text-white font-bold rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 backdrop-blur-sm"
+                >
+                  Read Online
+                </a>
+              </div>
+            </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* What's New, Editor's Choice, and Previous Posts sections removed per request */}
+
+      {/* Newsletter CTA */}
+      <section className="py-10 md:py-24 bg-[#3a225c]">
+        <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <NewsletterSignup />
         </div>
       </section>
 
