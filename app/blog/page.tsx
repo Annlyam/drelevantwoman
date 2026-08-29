@@ -192,9 +192,9 @@ export default function Blog() {
             
             <div className="w-full md:w-1/3 flex justify-center relative z-10">
               <div className="w-64 h-80 bg-white rounded-xl shadow-xl overflow-hidden transform -rotate-3 transition-transform hover:rotate-0 duration-500 border-4 border-white">
-                <img src="/assets/images/team/iveren_ann_lyam_founder_the_relevant_woman.jpg" alt="The Relevant Woman Magazine Cover" className="w-full h-full object-cover" />
+                <img src="/assets/magazines/magazine_cover.jpg" alt="The Relevant Woman Magazine Cover" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                  <span className="text-white font-bold text-xl tracking-widest uppercase border-2 border-white px-4 py-2">Maiden Issue</span>
+                  <span className="text-white font-bold text-xl tracking-widest uppercase border-2 border-white px-4 py-2 opacity-0 hover:opacity-100 transition-opacity">Maiden Issue</span>
                 </div>
               </div>
             </div>
