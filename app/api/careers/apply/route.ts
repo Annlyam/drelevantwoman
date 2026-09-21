@@ -11,18 +11,22 @@ export async function POST(req: NextRequest) {
     const fullName = formData.get("fullName") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
+    const country = formData.get("country") as string;
     const role = formData.get("role") as string;
     const portfolio = formData.get("portfolio") as string;
-    const coverLetter = formData.get("coverLetter") as string;
     const resumeFile = formData.get("resume") as File;
+    const coverLetterFile = formData.get("coverLetter") as File;
 
-    if (!fullName || !email || !phone || !role || !coverLetter || !resumeFile) {
+    if (!fullName || !email || !phone || !country || !role || !resumeFile || !coverLetterFile) {
       return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
     }
 
-    // Convert the File to a Base64 string for Brevo attachment
-    const buffer = await resumeFile.arrayBuffer();
-    const base64Content = Buffer.from(buffer).toString("base64");
+    // Convert the Files to Base64 strings for Brevo attachments
+    const resumeBuffer = await resumeFile.arrayBuffer();
+    const resumeBase64 = Buffer.from(resumeBuffer).toString("base64");
+    
+    const coverLetterBuffer = await coverLetterFile.arrayBuffer();
+    const coverLetterBase64 = Buffer.from(coverLetterBuffer).toString("base64");
 
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-w-600px; color: #333;">
@@ -30,13 +34,11 @@ export async function POST(req: NextRequest) {
         <p><strong>Applicant Name:</strong> ${fullName}</p>
         <p><strong>Email Address:</strong> ${email}</p>
         <p><strong>Phone Number:</strong> ${phone}</p>
+        <p><strong>Country:</strong> ${country}</p>
         <p><strong>Applying For:</strong> ${role}</p>
         ${portfolio ? `<p><strong>Portfolio/LinkedIn:</strong> <a href="${portfolio}">${portfolio}</a></p>` : ''}
         
-        <h3 style="color: #3a225c; margin-top: 24px;">Cover Letter / Pitch:</h3>
-        <div style="background: #f9f9f9; padding: 16px; border-left: 4px solid #f9f871; white-space: pre-wrap;">${coverLetter}</div>
-        
-        <p style="margin-top: 24px; font-size: 14px; color: #666;"><em>The applicant's resume is attached to this email.</em></p>
+        <p style="margin-top: 24px; font-size: 14px; color: #666;"><em>The applicant's CV and Cover Letter are attached to this email.</em></p>
       </div>
     `;
 
@@ -58,7 +60,11 @@ export async function POST(req: NextRequest) {
           attachment: [
             {
               name: resumeFile.name,
-              content: base64Content
+              content: resumeBase64
+            },
+            {
+              name: coverLetterFile.name,
+              content: coverLetterBase64
             }
           ]
         }),
