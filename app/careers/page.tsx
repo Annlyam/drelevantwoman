@@ -52,7 +52,7 @@ export default function CareersPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#f6f5f7]">
+    <main className="min-h-screen bg-[#f6f5f7] text-gray-900">
       <div className="bg-[#3a225c]">
         <Navigation />
       </div>

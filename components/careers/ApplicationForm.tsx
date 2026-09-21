@@ -34,11 +34,19 @@ export default function ApplicationForm() {
     setMessage("");
 
     const formData = new FormData(e.currentTarget);
-    const file = formData.get("resume") as File;
+    const resumeFile = formData.get("resume") as File;
+    const coverLetterFile = formData.get("coverLetter") as File;
     
-    if (file && file.size > 4 * 1024 * 1024) {
+    if (resumeFile && resumeFile.size > 4 * 1024 * 1024) {
       setStatus("error");
       setMessage("Resume file size must be less than 4MB.");
+      setIsSubmitting(false);
+      return;
+    }
+    
+    if (coverLetterFile && coverLetterFile.size > 4 * 1024 * 1024) {
+      setStatus("error");
+      setMessage("Cover Letter file size must be less than 4MB.");
       setIsSubmitting(false);
       return;
     }
@@ -92,44 +100,49 @@ export default function ApplicationForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label htmlFor="fullName" className="block text-sm font-semibold text-[#3a225c] mb-2">Full Name *</label>
-              <input type="text" id="fullName" name="fullName" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors" placeholder="Jane Doe" />
+              <input type="text" id="fullName" name="fullName" required className="w-full px-4 py-3 bg-white text-gray-900 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors" placeholder="Jane Doe" />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-semibold text-[#3a225c] mb-2">Email Address *</label>
-              <input type="email" id="email" name="email" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors" placeholder="jane@example.com" />
+              <input type="email" id="email" name="email" required className="w-full px-4 py-3 bg-white text-gray-900 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors" placeholder="jane@example.com" />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label htmlFor="phone" className="block text-sm font-semibold text-[#3a225c] mb-2">Phone Number *</label>
-              <input type="tel" id="phone" name="phone" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors" placeholder="+234..." />
+              <input type="tel" id="phone" name="phone" required className="w-full px-4 py-3 bg-white text-gray-900 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors" placeholder="+234..." />
             </div>
             <div>
+              <label htmlFor="country" className="block text-sm font-semibold text-[#3a225c] mb-2">Country *</label>
+              <input type="text" id="country" name="country" required className="w-full px-4 py-3 bg-white text-gray-900 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors" placeholder="e.g. Nigeria, USA" />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
               <label htmlFor="role" className="block text-sm font-semibold text-[#3a225c] mb-2">Role Applying For *</label>
-              <select id="role" name="role" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors bg-white">
+              <select id="role" name="role" required className="w-full px-4 py-3 bg-white text-gray-900 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors">
                 <option value="">Select a role...</option>
                 {ROLES.map((role) => (
                   <option key={role} value={role}>{role}</option>
                 ))}
               </select>
             </div>
-          </div>
-
-          <div>
-            <label htmlFor="portfolio" className="block text-sm font-semibold text-[#3a225c] mb-2">Portfolio / LinkedIn URL (Optional)</label>
-            <input type="url" id="portfolio" name="portfolio" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors" placeholder="https://..." />
+            <div>
+              <label htmlFor="portfolio" className="block text-sm font-semibold text-[#3a225c] mb-2">Portfolio / LinkedIn URL (Optional)</label>
+              <input type="url" id="portfolio" name="portfolio" className="w-full px-4 py-3 bg-white text-gray-900 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors" placeholder="https://..." />
+            </div>
           </div>
 
           <div>
             <label htmlFor="resume" className="block text-sm font-semibold text-[#3a225c] mb-2">Upload Resume/CV * <span className="text-xs text-gray-500 font-normal">(PDF, DOC, DOCX. Max 4MB)</span></label>
-            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#f9f871]/20 file:text-[#3a225c] hover:file:bg-[#f9f871]/30 cursor-pointer" />
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required className="w-full px-4 py-3 bg-white text-gray-900 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#f9f871]/20 file:text-[#3a225c] hover:file:bg-[#f9f871]/30 cursor-pointer" />
           </div>
 
           <div>
-            <label htmlFor="coverLetter" className="block text-sm font-semibold text-[#3a225c] mb-2">Cover Letter *</label>
-            <p className="text-xs text-gray-500 mb-2">Please state your interest in the position and highlight your relevant experience, skills, and suitability for the role.</p>
-            <textarea id="coverLetter" name="coverLetter" required rows={6} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors resize-none" placeholder="Write your cover letter here..."></textarea>
+            <label htmlFor="coverLetter" className="block text-sm font-semibold text-[#3a225c] mb-2">Upload Cover Letter * <span className="text-xs text-gray-500 font-normal">(PDF, DOC, DOCX. Max 4MB)</span></label>
+            <input type="file" id="coverLetter" name="coverLetter" accept=".pdf,.doc,.docx" required className="w-full px-4 py-3 bg-white text-gray-900 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#f9f871] focus:border-[#3a225c] transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#f9f871]/20 file:text-[#3a225c] hover:file:bg-[#f9f871]/30 cursor-pointer" />
           </div>
 
           {status === "error" && (
