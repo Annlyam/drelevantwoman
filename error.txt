@@ -1,108 +1,98 @@
-12:49:48.366 Running build in Washington, D.C., USA (East) – iad1
-12:49:48.367 Build machine configuration: 2 cores, 8 GB
-12:49:48.569 Cloning github.com/Annlyam/drelevantwoman (Branch: be2/admin-cms-setup, Commit: 95c1d91)
-12:49:50.812 Cloning completed: 2.242s
-12:49:50.991 Restored build cache from previous deployment (7TouZyiepUtc9uh7nJUAHD7ascHy)
-12:49:51.767 Running "vercel build"
-12:49:51.784 Vercel CLI 59.3.0
-12:49:52.029 Installing dependencies...
-12:49:53.662 npm warn ERESOLVE overriding peer dependency
-12:49:53.666 npm warn While resolving: @portabletext/editor@7.10.13
-12:49:53.666 npm warn Found: react@19.2.3
-12:49:53.666 npm warn node_modules/react
-12:49:53.666 npm warn react@"19.2.3" from the root project
-12:49:53.666 npm warn 58 more (@dnd-kit/accessibility, @dnd-kit/core, ...)
-12:49:53.666 npm warn
-12:49:53.666 npm warn Could not resolve dependency:
-12:49:53.666 npm warn peer react@"^19.2.7" from @portabletext/editor@7.10.13
-12:49:53.667 npm warn node_modules/@portabletext/editor
-12:49:53.667 npm warn peer @portabletext/editor@"^7.10.13" from @portabletext/plugin-character-pair-decorator@8.0.41
-12:49:53.667 npm warn node_modules/@portabletext/plugin-character-pair-decorator
-12:49:53.667 npm warn 9 more (@portabletext/plugin-dnd, ...)
-12:49:53.667 npm warn
-12:49:53.667 npm warn Conflicting peer dependency: react@19.2.8
-12:49:53.667 npm warn node_modules/react
-12:49:53.667 npm warn peer react@"^19.2.7" from @portabletext/editor@7.10.13
-12:49:53.667 npm warn node_modules/@portabletext/editor
-12:49:53.667 npm warn peer @portabletext/editor@"^7.10.13" from @portabletext/plugin-character-pair-decorator@8.0.41
-12:49:53.667 npm warn node_modules/@portabletext/plugin-character-pair-decorator
-12:49:53.667 npm warn 9 more (@portabletext/plugin-dnd, ...)
-12:49:56.172 npm warn ERESOLVE overriding peer dependency
-12:49:56.173 npm warn While resolving: @napi-rs/wasm-runtime@1.2.0
-12:49:56.173 npm warn Found: @emnapi/core@1.11.1
-12:49:56.173 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@emnapi/core
-12:49:56.174 npm warn @emnapi/core@"1.11.1" from @rolldown/binding-wasm32-wasi@1.1.5
-12:49:56.174 npm warn node_modules/@rolldown/binding-wasm32-wasi
-12:49:56.175 npm warn optional @rolldown/binding-wasm32-wasi@"1.1.5" from rolldown@1.1.5
-12:49:56.175 npm warn node_modules/rolldown
-12:49:56.175 npm warn
-12:49:56.176 npm warn Could not resolve dependency:
-12:49:56.176 npm warn peer @emnapi/core@"^2.0.0-alpha.3" from @napi-rs/wasm-runtime@1.2.0
-12:49:56.176 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@napi-rs/wasm-runtime
-12:49:56.176 npm warn @napi-rs/wasm-runtime@"^1.1.6" from @rolldown/binding-wasm32-wasi@1.1.5
-12:49:56.176 npm warn node_modules/@rolldown/binding-wasm32-wasi
-12:49:56.176 npm warn
-12:49:56.176 npm warn Conflicting peer dependency: @emnapi/core@2.0.0-alpha.4
-12:49:56.176 npm warn node_modules/@emnapi/core
-12:49:56.176 npm warn peer @emnapi/core@"^2.0.0-alpha.3" from @napi-rs/wasm-runtime@1.2.0
-12:49:56.176 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@napi-rs/wasm-runtime
-12:49:56.176 npm warn @napi-rs/wasm-runtime@"^1.1.6" from @rolldown/binding-wasm32-wasi@1.1.5
-12:49:56.176 npm warn node_modules/@rolldown/binding-wasm32-wasi
-12:49:56.177 npm warn ERESOLVE overriding peer dependency
-12:49:56.178 npm warn While resolving: @napi-rs/wasm-runtime@1.2.0
-12:49:56.178 npm warn Found: @emnapi/runtime@1.11.1
-12:49:56.178 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@emnapi/runtime
-12:49:56.179 npm warn @emnapi/runtime@"1.11.1" from @rolldown/binding-wasm32-wasi@1.1.5
-12:49:56.179 npm warn node_modules/@rolldown/binding-wasm32-wasi
-12:49:56.179 npm warn optional @rolldown/binding-wasm32-wasi@"1.1.5" from rolldown@1.1.5
-12:49:56.179 npm warn node_modules/rolldown
-12:49:56.179 npm warn
-12:49:56.180 npm warn Could not resolve dependency:
-12:49:56.180 npm warn peer @emnapi/runtime@"^2.0.0-alpha.3" from @napi-rs/wasm-runtime@1.2.0
-12:49:56.180 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@napi-rs/wasm-runtime
-12:49:56.180 npm warn @napi-rs/wasm-runtime@"^1.1.6" from @rolldown/binding-wasm32-wasi@1.1.5
-12:49:56.180 npm warn node_modules/@rolldown/binding-wasm32-wasi
-12:49:56.181 npm warn
-12:49:56.181 npm warn Conflicting peer dependency: @emnapi/runtime@2.0.0-alpha.4
-12:49:56.181 npm warn node_modules/@emnapi/runtime
-12:49:56.182 npm warn peer @emnapi/runtime@"^2.0.0-alpha.3" from @napi-rs/wasm-runtime@1.2.0
-12:49:56.182 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@napi-rs/wasm-runtime
-12:49:56.182 npm warn @napi-rs/wasm-runtime@"^1.1.6" from @rolldown/binding-wasm32-wasi@1.1.5
-12:49:56.183 npm warn node_modules/@rolldown/binding-wasm32-wasi
-12:49:59.616 
-12:49:59.616 added 6 packages, removed 7 packages, and changed 7 packages in 7s
-12:49:59.616 
-12:49:59.617 316 packages are looking for funding
-12:49:59.617 run `npm fund` for details
-12:49:59.618 npm warn allow-scripts 4 packages have install scripts not yet covered by allowScripts:
-12:49:59.619 npm warn allow-scripts canvas@3.2.1 (install: node-gyp rebuild)
-12:49:59.619 npm warn allow-scripts esbuild@0.28.1 (postinstall: node install.js)
-12:49:59.620 npm warn allow-scripts sharp@0.34.5 (install: node install/check.js || npm run build)
-12:49:59.620 npm warn allow-scripts unrs-resolver@1.11.1 (postinstall: napi-postinstall unrs-resolver 1.11.1 check)
-12:49:59.621 npm warn allow-scripts
-12:49:59.621 npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
-12:49:59.659 Detected Next.js version: 16.1.1
-12:49:59.668 Running "npm run build"
-12:49:59.770 
-12:49:59.770 > drelevantwoman@0.1.0 build
-12:49:59.770 > next build
-12:49:59.770 
-12:50:00.863 ▲ Next.js 16.1.1 (Turbopack)
-12:50:00.863 
-12:50:00.902 Creating an optimized production build ...
-12:51:04.254 ✓ Compiled successfully in 63s
-12:51:04.264 Running TypeScript ...
-12:51:15.107 Failed to compile.
-12:51:15.108 
-12:51:15.110 ./app/academy/[slug]/page.tsx:64:43
-12:51:15.110 Type error: Parameter 'item' implicitly has an 'any' type.
-12:51:15.110 
-12:51:15.111 62 | </h2>
-12:51:15.111 63 | <div className="grid md:grid-cols-2 gap-4">
-12:51:15.111 > 64 | {book.whatYouLearn.map((item, index) => (
-12:51:15.111 | ^
-12:51:15.111 65 | <div key={index} className="flex items-start gap-3">
-12:51:15.111 66 | <CheckCircle className="w-5 h-5 text-[#fc98ac] flex-shrink-0 mt-0.5" />
-12:51:15.112 67 | <p className="text-white/80">{item}</p>
-12:51:15.167 Next.js build worker exited with code: 1 and signal: null
-12:51:15.233 Error: Command "npm run build" exited with 1
+07:06:38.063 Running build in Washington, D.C., USA (East) – iad1
+07:06:38.064 Build machine configuration: 2 cores, 8 GB
+07:06:38.197 Cloning github.com/Annlyam/drelevantwoman (Branch: be2/admin-cms-setup, Commit: aedff88)
+07:06:40.708 Cloning completed: 2.510s
+07:06:40.831 Restored build cache from previous deployment (7cdxVEWaeMXb3QMF9WUKc1GvuQ4N)
+07:06:41.872 Running "vercel build"
+07:06:41.885 Vercel CLI 60.1.3
+07:06:42.147 Installing dependencies...
+07:06:45.553 npm warn ERESOLVE overriding peer dependency
+07:06:45.555 npm warn While resolving: @portabletext/editor@7.10.13
+07:06:45.555 npm warn Found: react@19.2.3
+07:06:45.559 npm warn node_modules/react
+07:06:45.559 npm warn   react@"19.2.3" from the root project
+07:06:45.559 npm warn   58 more (@dnd-kit/accessibility, @dnd-kit/core, ...)
+07:06:45.560 npm warn
+07:06:45.560 npm warn Could not resolve dependency:
+07:06:45.560 npm warn peer react@"^19.2.7" from @portabletext/editor@7.10.13
+07:06:45.560 npm warn node_modules/@portabletext/editor
+07:06:45.560 npm warn   peer @portabletext/editor@"^7.10.13" from @portabletext/plugin-character-pair-decorator@8.0.41
+07:06:45.560 npm warn   node_modules/@portabletext/plugin-character-pair-decorator
+07:06:45.560 npm warn   9 more (@portabletext/plugin-dnd, ...)
+07:06:45.561 npm warn
+07:06:45.561 npm warn Conflicting peer dependency: react@19.3.0
+07:06:45.561 npm warn node_modules/react
+07:06:45.561 npm warn   peer react@"^19.2.7" from @portabletext/editor@7.10.13
+07:06:45.561 npm warn   node_modules/@portabletext/editor
+07:06:45.561 npm warn     peer @portabletext/editor@"^7.10.13" from @portabletext/plugin-character-pair-decorator@8.0.41
+07:06:45.561 npm warn     node_modules/@portabletext/plugin-character-pair-decorator
+07:06:45.561 npm warn     9 more (@portabletext/plugin-dnd, ...)
+07:06:48.101 npm warn ERESOLVE overriding peer dependency
+07:06:48.101 npm warn While resolving: @napi-rs/wasm-runtime@1.2.0
+07:06:48.101 npm warn Found: @emnapi/core@1.11.1
+07:06:48.101 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@emnapi/core
+07:06:48.102 npm warn   @emnapi/core@"1.11.1" from @rolldown/binding-wasm32-wasi@1.1.5
+07:06:48.102 npm warn   node_modules/@rolldown/binding-wasm32-wasi
+07:06:48.102 npm warn     optional @rolldown/binding-wasm32-wasi@"1.1.5" from rolldown@1.1.5
+07:06:48.102 npm warn     node_modules/rolldown
+07:06:48.102 npm warn
+07:06:48.102 npm warn Could not resolve dependency:
+07:06:48.102 npm warn peer @emnapi/core@"^2.0.0-alpha.3" from @napi-rs/wasm-runtime@1.2.0
+07:06:48.102 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@napi-rs/wasm-runtime
+07:06:48.102 npm warn   @napi-rs/wasm-runtime@"^1.1.6" from @rolldown/binding-wasm32-wasi@1.1.5
+07:06:48.102 npm warn   node_modules/@rolldown/binding-wasm32-wasi
+07:06:48.102 npm warn
+07:06:48.102 npm warn Conflicting peer dependency: @emnapi/core@2.0.0-alpha.5
+07:06:48.102 npm warn node_modules/@emnapi/core
+07:06:48.102 npm warn   peer @emnapi/core@"^2.0.0-alpha.3" from @napi-rs/wasm-runtime@1.2.0
+07:06:48.102 npm warn   node_modules/@rolldown/binding-wasm32-wasi/node_modules/@napi-rs/wasm-runtime
+07:06:48.102 npm warn     @napi-rs/wasm-runtime@"^1.1.6" from @rolldown/binding-wasm32-wasi@1.1.5
+07:06:48.102 npm warn     node_modules/@rolldown/binding-wasm32-wasi
+07:06:48.104 npm warn ERESOLVE overriding peer dependency
+07:06:48.105 npm warn While resolving: @napi-rs/wasm-runtime@1.2.0
+07:06:48.105 npm warn Found: @emnapi/runtime@1.11.1
+07:06:48.105 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@emnapi/runtime
+07:06:48.105 npm warn   @emnapi/runtime@"1.11.1" from @rolldown/binding-wasm32-wasi@1.1.5
+07:06:48.105 npm warn   node_modules/@rolldown/binding-wasm32-wasi
+07:06:48.105 npm warn     optional @rolldown/binding-wasm32-wasi@"1.1.5" from rolldown@1.1.5
+07:06:48.105 npm warn     node_modules/rolldown
+07:06:48.105 npm warn
+07:06:48.105 npm warn Could not resolve dependency:
+07:06:48.105 npm warn peer @emnapi/runtime@"^2.0.0-alpha.3" from @napi-rs/wasm-runtime@1.2.0
+07:06:48.106 npm warn node_modules/@rolldown/binding-wasm32-wasi/node_modules/@napi-rs/wasm-runtime
+07:06:48.106 npm warn   @napi-rs/wasm-runtime@"^1.1.6" from @rolldown/binding-wasm32-wasi@1.1.5
+07:06:48.106 npm warn   node_modules/@rolldown/binding-wasm32-wasi
+07:06:48.106 npm warn
+07:06:48.106 npm warn Conflicting peer dependency: @emnapi/runtime@2.0.0-alpha.5
+07:06:48.106 npm warn node_modules/@emnapi/runtime
+07:06:48.106 npm warn   peer @emnapi/runtime@"^2.0.0-alpha.3" from @napi-rs/wasm-runtime@1.2.0
+07:06:48.106 npm warn   node_modules/@rolldown/binding-wasm32-wasi/node_modules/@napi-rs/wasm-runtime
+07:06:48.106 npm warn     @napi-rs/wasm-runtime@"^1.1.6" from @rolldown/binding-wasm32-wasi@1.1.5
+07:06:48.106 npm warn     node_modules/@rolldown/binding-wasm32-wasi
+07:06:54.300 
+07:06:54.301 changed 6 packages in 11s
+07:06:54.302 
+07:06:54.302 317 packages are looking for funding
+07:06:54.302   run `npm fund` for details
+07:06:54.302 npm warn install-scripts 4 packages have install scripts not yet covered by allowScripts:
+07:06:54.302 npm warn install-scripts   canvas@3.2.1 (install: node-gyp rebuild)
+07:06:54.302 npm warn install-scripts   esbuild@0.28.1 (postinstall: node install.js)
+07:06:54.303 npm warn install-scripts   sharp@0.34.5 (install: node install/check.js || npm run build)
+07:06:54.303 npm warn install-scripts   unrs-resolver@1.11.1 (postinstall: napi-postinstall unrs-resolver 1.11.1 check)
+07:06:54.303 npm warn install-scripts
+07:06:54.303 npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+07:06:54.357 Detected Next.js version: 16.1.1
+07:06:54.373 Running "npm run build"
+07:06:54.511 
+07:06:54.512 > drelevantwoman@0.1.0 build
+07:06:54.512 > next build
+07:06:54.512 
+07:06:55.816 ▲ Next.js 16.1.1 (Turbopack)
+07:06:55.818 
+07:06:55.853   Creating an optimized production build ...
+07:07:46.018 
+07:07:46.018 > Build error occurred
+07:07:46.027 Error: Turbopack build failed with 1 errors:
+07:07:46.027 ./components/careers/ApplicationForm.tsx:1:1
+07:07:46.027 Parsing ecmascript source code failed
+07:07:46.030 > 1 | 

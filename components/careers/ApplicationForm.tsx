@@ -23,6 +23,8 @@ const ROLES = [
 ];
 
 export default function ApplicationForm() {
+  const APPLICATIONS_OPEN = false; // Toggle this to true to reopen applications
+  
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -75,6 +77,23 @@ export default function ApplicationForm() {
       setIsSubmitting(false);
     }
   };
+
+  if (!APPLICATIONS_OPEN) {
+    return (
+      <div className="bg-white rounded-2xl p-8 md:p-12 shadow-xl border border-gray-100 text-center" id="apply">
+        <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+        <h3 className="text-2xl font-bold text-[#3a225c] mb-4">Applications Closed</h3>
+        <p className="text-gray-600 mb-6">
+          Thank you for your interest in joining The Relevant Woman! We have received the required number of applications and have currently paused new submissions.
+        </p>
+        <p className="text-gray-500 text-sm">
+          Please check back later or subscribe to our newsletter for future opportunities.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white rounded-2xl p-8 md:p-12 shadow-xl border border-gray-100" id="apply">
