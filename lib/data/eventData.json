@@ -1,5 +1,52 @@
 [
   {
+    "id": "the-founders-table",
+    "title": "The Founder’s Table",
+    "description": "<p class=\"mb-4 text-xl\"><strong class=\"text-[#f9f871]\">You haven’t figured out what 2027 should look like? Let’s plan it together.</strong></p><p class=\"mb-6 text-white/90\">The Founder’s Table is a planning and accountability program for entrepreneurs and social impact individuals who want to start the year with clarity, purpose, accountability and turn their goals into action.</p><p class=\"mb-4 text-white/90 font-semibold\">Join a room of like-minded founders to reflect, share ideas, and map out what’s next for your business. Together, you’ll:</p><ul class=\"list-disc list-inside mb-8 space-y-3 text-white/80 ml-6\"><li class=\"mb-2\">Set meaningful goals for the year ahead</li><li class=\"mb-2\">Plan the steps to bring those goals to life</li><li class=\"mb-2\">Create clear, actionable roadmaps</li><li class=\"mb-2\">Connect with founders, business owners, and accountability partners</li><li class=\"mb-2\">Access resources to support your progress</li></ul><p class=\"mb-4 text-white/90 font-medium text-lg\">You don’t have to plan your next chapter alone. Pull up a seat at The Founder’s Table and build a year you can move forward with confidence.</p>",
+    "category": "Business & Strategy",
+    "date": "2026-11-26",
+    "displayDate": "26th - 27th November 2026",
+    "time": "10:00",
+    "endTime": "16:00",
+    "venue": "Virtual (Online)",
+    "location": "Virtual Event",
+    "price": 0,
+    "currency": "₦",
+    "image": "/assets/images/extras/founders-table.jpg",
+    "status": "upcoming",
+    "organizer": {
+      "name": "The Relevant Woman",
+      "contact": "therelevantw@gmail.com"
+    },
+    "tags": [
+      "The Founder’s Table",
+      "Planning",
+      "Accountability",
+      "Entrepreneurs",
+      "Social Impact",
+      "Business Roadmap"
+    ],
+    "capacity": 500,
+    "registered": 0,
+    "registrationEndDate": "2026-11-26",
+    "website": "www.drelevantwoman.com",
+    "whatsappGroup": "https://chat.whatsapp.com/DN7hdkN33rgE9TU2P7g63N?s=cl&p=i&mlu=4&ilr=4&iam=2",
+    "features": [
+      "Set meaningful goals for the year ahead",
+      "Plan the steps to bring those goals to life",
+      "Create clear, actionable roadmaps",
+      "Connect with founders, business owners, and accountability partners",
+      "Access resources to support your progress"
+    ],
+    "benefits": [
+      "Clarity, purpose, and accountability for 2027",
+      "Actionable roadmap for your business and personal growth",
+      "Network of fellow founders and accountability partners",
+      "Access to resources and templates to support your progress"
+    ],
+    "isFeatured": true
+  },
+  {
     "id": "the-relevant-woman-academy-rwa",
     "title": "The Relevant Woman ACADEMY (RWA)",
     "description": "<p class=\"mb-4 text-xl\"><strong class=\"text-[#f9f871]\">Register today and begin a journey of transformation.</strong></p><p class=\"mb-6 text-white/90\">The Relevant Woman Academy offers a comprehensive program designed to empower women through personal and professional development.</p><p class=\"mb-4 text-white/90 font-semibold\">This virtual program provides:</p><ul class=\"list-disc list-inside mb-8 space-y-3 text-white/80 ml-6\"><li class=\"mb-2\">Official Certification from The Relevant Woman Academy</li><li class=\"mb-2\">Training led by top professionals and industry experts</li><li class=\"mb-2\">Featured exposure in The Relevant Woman Magazine</li><li class=\"mb-2\">Exclusive access to partner-sponsored opportunities and awards</li></ul><p class=\"mb-4 text-white/90 font-semibold text-lg\">Key Benefits:</p><ul class=\"list-disc list-inside space-y-3 text-white/80 ml-6\"><li class=\"mb-2\">Become deeply rooted in your identity</li><li class=\"mb-2\">Master self-leadership</li><li class=\"mb-2\">Gain clarity on purpose/assignment/calling</li><li class=\"mb-2\">Acquire transferable career excellence</li><li class=\"mb-2\">Cultivate a wealthy mindset</li><li class=\"mb-2\">Develop and lead others effectively</li><li class=\"mb-2\">Become a powerful communicator and public speaker</li></ul>",

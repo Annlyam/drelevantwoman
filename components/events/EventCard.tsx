@@ -13,6 +13,7 @@ export interface Event {
   description: string;
   category: string;
   date: string;
+  displayDate?: string;
   time: string;
   endTime?: string;
   venue: string;
@@ -33,6 +34,7 @@ export interface Event {
   registered?: number;
   website?: string;
   registrationEndDate?: string;
+  whatsappGroup?: string;
   features?: string[];
   benefits?: string[];
 }
@@ -43,12 +45,13 @@ interface EventCardProps {
 }
 
 export default function EventCard({ event, index = 0 }: EventCardProps) {
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString: string, displayDate?: string) => {
     const date = new Date(dateString);
+    const isMultiDayNov = displayDate && displayDate.toLowerCase().includes("26th - 27th");
     return {
-      day: date.getDate(),
+      day: isMultiDayNov ? "26-27" : date.getDate(),
       month: date.toLocaleDateString("en-US", { month: "short" }),
-      full: date.toLocaleDateString("en-US", {
+      full: displayDate || date.toLocaleDateString("en-US", {
         weekday: "short",
         month: "short",
         day: "numeric",
@@ -56,7 +59,7 @@ export default function EventCard({ event, index = 0 }: EventCardProps) {
     };
   };
 
-  const dateInfo = formatDate(event.date);
+  const dateInfo = formatDate(event.date, event.displayDate);
   const priceDisplay =
     event.price === 0
       ? "FREE"

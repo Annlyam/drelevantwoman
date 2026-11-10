@@ -13,6 +13,7 @@ interface FeaturedEventsProps {
 
 export default function FeaturedEvents({ events = staticEventData }: FeaturedEventsProps) {
   const homepageFeaturedEventIds = new Set([
+    "the-founders-table",
     "international-womens-day-2025",
     "celebration-of-international-womens-month",
   ]);

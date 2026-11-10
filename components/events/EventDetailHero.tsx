@@ -39,21 +39,22 @@ export default function EventDetailHero({ event }: EventDetailHeroProps) {
     };
   }, [isVirtualInfoModalOpen]);
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString: string, displayDate?: string) => {
     const date = new Date(dateString);
     return {
       day: date.toLocaleDateString("en-US", { weekday: "short" }),
       date: date.getDate(),
       month: date.toLocaleDateString("en-US", { month: "short" }),
-      full: date.toLocaleDateString("en-US", {
+      full: displayDate || date.toLocaleDateString("en-US", {
         weekday: "short",
         month: "short",
         day: "numeric",
+        year: "numeric",
       }),
     };
   };
 
-  const dateInfo = formatDate(event.date);
+  const dateInfo = formatDate(event.date, (event as any).displayDate);
   const priceDisplay =
     event.price === 0
       ? "FREE"
@@ -133,8 +134,8 @@ export default function EventDetailHero({ event }: EventDetailHeroProps) {
                 <div className="flex items-center gap-2">
                   <Calendar className="w-5 h-5 text-[#f9f871]" />
                   <span>
-                    {dateInfo.full}, {event.time}
-                    {event.endTime && ` - ${event.endTime}`}
+                    {dateInfo.full}
+                    {!event.displayDate && `, ${event.time}${event.endTime ? ` - ${event.endTime}` : ""}`}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -154,7 +155,7 @@ export default function EventDetailHero({ event }: EventDetailHeroProps) {
 
               {/* CTA and Share */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
-                <Link href={`/events/${event.id}/secure-a-slot`}>
+                <Link href={`/events/${event.id}/register`}>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
