@@ -17,7 +17,7 @@ export default function AdminAppointmentsPage() {
   const [result, setResult] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handleAction = async (action: "test" | "send") => {
+  const handleAction = async (action: "test" | "send" | "report") => {
     if (action === "send") {
       const confirmDispatch = window.confirm(
         `Are you sure you want to send appointment emails to all ${SUCCESSFUL_APPLICANTS.length} candidates? Each candidate will receive their personalized appointment letter and handbook.`
@@ -163,6 +163,19 @@ export default function AdminAppointmentsPage() {
                 Sends individual emails, handbook, and dispatches audit report.
               </p>
             </div>
+          </div>
+
+          {/* Quick Resend Report Link */}
+          <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between text-xs text-white/60">
+            <span>Need another copy of the delivery report?</span>
+            <button
+              type="button"
+              disabled={loading}
+              onClick={() => handleAction("report")}
+              className="text-[#f9f871] hover:underline font-semibold flex items-center gap-1 disabled:opacity-50"
+            >
+              <Mail className="w-3.5 h-3.5" /> Resend Audit Report to {testEmail}
+            </button>
           </div>
 
           {/* Feedback messages */}

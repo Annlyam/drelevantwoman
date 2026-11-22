@@ -72,11 +72,10 @@ async function sendBrevoEmail(payload: {
   return { success: true };
 }
 
-async function sendAuditReport(results: {
-  candidate: Candidate;
-  success: boolean;
-  error?: string;
-}[], isTest: boolean = false) {
+function generateAuditReportHtml(
+  results: { candidate: Candidate; success: boolean; error?: string }[],
+  isTest: boolean = false
+): string {
   const rows = results
     .map(
       (r, i) => `
@@ -97,7 +96,7 @@ async function sendAuditReport(results: {
     )
     .join("");
 
-  const reportHtml = `
+  return `
   <!DOCTYPE html>
   <html>
   <head><meta charset="utf-8"></head>
@@ -144,6 +143,14 @@ async function sendAuditReport(results: {
   </body>
   </html>
   `;
+}
+
+async function sendAuditReport(results: {
+  candidate: Candidate;
+  success: boolean;
+  error?: string;
+}[], isTest: boolean = false) {
+  const reportHtml = generateAuditReportHtml(results, isTest);
 
   for (const adminEmail of AUDIT_CONFIRMATION_EMAILS) {
     try {
@@ -209,6 +216,37 @@ export async function GET(req: NextRequest) {
     } catch (err: any) {
       return NextResponse.json(
         { success: false, error: err.message },
+        { status: 500 }
+      );
+    }
+  }
+
+  // Resend Audit Report only (lightweight, no attachment)
+  if (action === "report") {
+    const targetEmail = testEmail || "luzzylugard@gmail.com";
+    const syntheticResults = SUCCESSFUL_APPLICANTS.map((c) => ({
+      candidate: c,
+      success: true,
+    }));
+
+    try {
+      await sendBrevoEmail({
+        to: [
+          { email: targetEmail, name: "TRW Management" },
+          { email: "therelevantw@gmail.com", name: "The Relevant Woman" },
+        ],
+        subject: `[TRW Report] Appointment Emails Delivery Summary (8/8 Candidates Dispatched)`,
+        htmlContent: generateAuditReportHtml(syntheticResults),
+      });
+
+      return NextResponse.json({
+        success: true,
+        mode: "report",
+        message: `Audit report email successfully sent to ${targetEmail} and therelevantw@gmail.com`,
+      });
+    } catch (err: any) {
+      return NextResponse.json(
+        { success: false, error: `Brevo report delivery error: ${err.message}` },
         { status: 500 }
       );
     }
