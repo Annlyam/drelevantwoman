@@ -4,26 +4,18 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const ROLES = [
-  "Head of Social Media",
-  "Asst. Social Media Manager",
-  "Community Manager - WhatsApp",
-  "Community Manager - Telegram",
-  "Community Manager - Instagram",
-  "Community Manager - LinkedIn",
-  "Community Manager - TikTok",
-  "Content Writer",
-  "Video Editor",
-  "Project Manager",
-  "Asst. Project Manager",
-  "Programs Coordinator",
-  "Partnership Coordinator",
-  "Marketing/Sales Manager",
-  "Accountant",
-  "Graphic Designer"
+  "Social Media Management",
+  "Video Editor / Content Creation",
+  "Executive / Virtual Assistant",
+  "Administrative Assistant",
+  "Frontend Developer",
+  "Backend Developer",
+  "Product Designer",
+  "UI/UX Designer",
 ];
 
 export default function ApplicationForm() {
-  const APPLICATIONS_OPEN = false; // Toggle this to true to reopen applications
+  const APPLICATIONS_OPEN = true; // Applications open for volunteer roles
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
@@ -97,7 +89,10 @@ export default function ApplicationForm() {
 
   return (
     <div className="bg-white rounded-2xl p-8 md:p-12 shadow-xl border border-gray-100" id="apply">
-      <h3 className="text-2xl font-bold text-[#3a225c] mb-6">Submit Your Application</h3>
+      <h3 className="text-2xl font-bold text-[#3a225c] mb-4">Submit Your Application</h3>
+      <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-900 text-sm">
+        <strong>Please Note:</strong> All positions are <strong>volunteer roles</strong> and there is <strong>no monetary compensation for now</strong>.
+      </div>
       <p className="text-gray-600 mb-8">
         Fill out the form below to apply for a volunteer role. Ensure your CV and Cover Letter highlight your relevant experience and skills.
       </p>

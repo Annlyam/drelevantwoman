@@ -34,21 +34,17 @@ export default function CareersPage() {
   ];
 
   const rolesList1 = [
-    "Head of Social Media",
-    "Asst. Social Media Manager",
-    "Community Managers (WhatsApp, Telegram, Instagram, LinkedIn, TikTok)",
-    "Content Writers",
-    "Video Editors",
-    "Project Manager"
+    "Social Media Management",
+    "Video Editor / Content Creation",
+    "Executive / Virtual Assistant",
+    "Administrative Assistant",
   ];
 
   const rolesList2 = [
-    "Asst. Project Manager",
-    "Programs Coordinator",
-    "Partnership Coordinator",
-    "Marketing/Sales Manager",
-    "Accountant",
-    "Graphic Designer"
+    "Frontend Developer",
+    "Backend Developer",
+    "Product Designer",
+    "UI/UX Designer",
   ];
 
   return (
@@ -91,8 +87,8 @@ export default function CareersPage() {
                     <svg className="h-6 w-6 text-[#fc98ac]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-[#3a225c] mb-1">Strictly a Volunteer Role</h3>
-                    <p className="text-gray-600">Bring your skills, support our mission, and grow with us! Men and women are welcome to apply.</p>
+                    <h3 className="text-lg font-bold text-[#3a225c] mb-1">Strictly Volunteer Roles (No Monetary Compensation)</h3>
+                    <p className="text-gray-600">Please note that all these positions are volunteer roles and there is no monetary compensation for now. Bring your skills, support our mission, gain practical experience, and grow with us! Men and women are welcome to apply.</p>
                   </div>
                 </div>
               </div>

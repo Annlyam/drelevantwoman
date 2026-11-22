@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY!;
 const EMAIL_FROM = process.env.EMAIL_FROM || "noreply@drelevantwoman.com";
-const TARGET_EMAIL = "therelevantw@gmail.com"; // Based on the flyer
+const TARGET_EMAIL = process.env.ADMIN_EMAIL || process.env.ORGANIZATION_EMAIL || "therelevantw@gmail.com";
 
 export async function POST(req: NextRequest) {
   try {
