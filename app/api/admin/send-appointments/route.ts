@@ -47,6 +47,18 @@ async function sendBrevoEmail(payload: {
     return { success: true, simulated: true };
   }
 
+  const emailBody: Record<string, any> = {
+    sender: { email: EMAIL_FROM, name: "The Relevant Woman" },
+    to: payload.to,
+    subject: payload.subject,
+    htmlContent: payload.htmlContent,
+    replyTo: payload.replyTo || { email: "therelevantw@gmail.com", name: "The Relevant Woman" },
+  };
+
+  if (payload.attachment && payload.attachment.length > 0) {
+    emailBody.attachment = payload.attachment;
+  }
+
   const response = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: {
@@ -54,14 +66,7 @@ async function sendBrevoEmail(payload: {
       "content-type": "application/json",
       accept: "application/json",
     },
-    body: JSON.stringify({
-      sender: { email: EMAIL_FROM, name: "The Relevant Woman" },
-      to: payload.to,
-      subject: payload.subject,
-      htmlContent: payload.htmlContent,
-      replyTo: payload.replyTo || { email: "therelevantw@gmail.com", name: "The Relevant Woman" },
-      attachment: payload.attachment || [],
-    }),
+    body: JSON.stringify(emailBody),
   });
 
   if (!response.ok) {
